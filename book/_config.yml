@@ -2,7 +2,7 @@
 # Book settings
 title                         : Applied Machine Learning
 author                        : Jubayer Hossain
-logo                          : 'numpy.svg'
+logo                          : 'robot.png'
 email                         : jubayer@hdrobd.org
 description: >-
   Applied Machine Learning
@@ -12,7 +12,7 @@ execute:
 
 
 html:
-  favicon                     : 'numpy.svg'
+  favicon                     : 'robot.png'
   home_page_in_navbar         : false
   use_edit_page_button        : false
   use_repository_button       : true

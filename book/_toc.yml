@@ -2,17 +2,7 @@
 
 - part: Basics
   chapters:
-  - file: notebooks/00-intro
-  - file: notebooks/01-Introduction to NumPy
-  - file: notebooks/02-Array Creation Function
-  - file: notebooks/03-Data Types
-  - file: notebooks/04-Setting Array Elements
-  - file: notebooks/05-Array Slicing
-  - file: notebooks/06-Array Operations
-
-- part: Advance
-  chapters:
-  - file: notebooks/07-Vectors and Matrix
-  - file: notebooks/08-Statistics
-  - file: notebooks/09-Linear Algebra
-  - file: notebooks/10-NumPy Real World Examples
+  - file: notebooks/00-Introduction-to-Machine-Learning
+  - file: notebooks/01-Machine-Learning-Terminology
+  - file: notebooks/02-Exploring-Data-with-Descriptive-Statistics
+  - file: notebooks/03-Exploring-Data-wtih-Visualization

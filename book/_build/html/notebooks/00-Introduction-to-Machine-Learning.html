@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Introduction to Machine Learning &#8212; Applied Machine Learning</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/robot.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Getting Started" href="01-Machine-Learning-Terminology.html" />
+    <link rel="prev" title="Applied Machine Learning" href="../index.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/robot.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Applied Machine Learning</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Basics
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction to Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-Machine-Learning-Terminology.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-Exploring-Data-with-Descriptive-Statistics.html">
+   Understand Data with Descriptive Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-Exploring-Data-wtih-Visualization.html">
+   Exploring Data with Visualization
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/00-Introduction-to-Machine-Learning.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/hossainlab/aml/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hossainlab/aml/master?urlpath=tree/book/notebooks/00-Introduction-to-Machine-Learning.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/hossainlab/aml/blob/master/book/notebooks/00-Introduction-to-Machine-Learning.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-machine-learning">
+   What machine learning?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-does-machine-learning-work">
+   How does machine learning “work”?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-machine-learning-algorithms">
+   Types of Machine Learning Algorithms?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-does-supervised-learning-works">
+   How does Supervised Learning Works?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-unsupervised-learning-works">
+   How Unsupervised Learning Works?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-reinforcement-learning-works">
+   How Reinforcement Learning Works?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-of-supervised-learning">
+   Example of Supervised Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-of-unsupervised-learning">
+   Example of Unsupervised Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-terminology">
+   Machine learning terminology
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-about-machine-learning">
+   Questions about machine learning
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduction-to-machine-learning">
+<h1>Introduction to Machine Learning<a class="headerlink" href="#introduction-to-machine-learning" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-machine-learning">
+<h2>What machine learning?<a class="headerlink" href="#what-machine-learning" title="Permalink to this headline">¶</a></h2>
+<p>One definition: “Machine learning is the semi-automated extraction of knowledge from data”</p>
+<ul class="simple">
+<li><p><strong>Knowledge from data</strong>: Starts with a question that might be answerable using data</p></li>
+<li><p><strong>Automated extraction</strong>: A computer provides the insight</p></li>
+<li><p><strong>Semi-automated</strong>: Requires many smart decisions by a human</p></li>
+</ul>
+</div>
+<div class="section" id="how-does-machine-learning-work">
+<h2>How does machine learning “work”?<a class="headerlink" href="#how-does-machine-learning-work" title="Permalink to this headline">¶</a></h2>
+<p>High-level steps of supervised learning:</p>
+<ol class="simple">
+<li><p>First, train a <strong>machine learning model</strong> using <strong>labeled data</strong></p>
+<ul class="simple">
+<li><p>“Labeled data” has been labeled with the outcome</p></li>
+<li><p>“Machine learning model” learns the relationship between the attributes of the data and its outcome</p></li>
+</ul>
+</li>
+<li><p>Then, make <strong>predictions</strong> on <strong>new data</strong> for which the label is unknown</p></li>
+</ol>
+<p><img alt="" src="../_images/ml_workflow.png" /></p>
+<p><img alt="Supervised learning" src="../_images/01_supervised_learning.png" /></p>
+</div>
+<div class="section" id="types-of-machine-learning-algorithms">
+<h2>Types of Machine Learning Algorithms?<a class="headerlink" href="#types-of-machine-learning-algorithms" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Supervised Learning</p></li>
+<li><p>Unsupervised Learning</p></li>
+<li><p>Reinforcement Learning
+<img alt="" src="../_images/mlalgo.png" /></p></li>
+</ul>
+</div>
+<div class="section" id="how-does-supervised-learning-works">
+<h2>How does Supervised Learning Works?<a class="headerlink" href="#how-does-supervised-learning-works" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="how-unsupervised-learning-works">
+<h2>How Unsupervised Learning Works?<a class="headerlink" href="#how-unsupervised-learning-works" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="../_images/unsupervised_learning.png" /></p>
+</div>
+<div class="section" id="how-reinforcement-learning-works">
+<h2>How Reinforcement Learning Works?<a class="headerlink" href="#how-reinforcement-learning-works" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="../_images/reinforcement_learning.png" /></p>
+</div>
+<div class="section" id="example-of-supervised-learning">
+<h2>Example of Supervised Learning<a class="headerlink" href="#example-of-supervised-learning" title="Permalink to this headline">¶</a></h2>
+<p>Making predictions using data</p>
+<ul class="simple">
+<li><p>Example: Is a given email “spam” or “ham”?</p></li>
+<li><p>There is an outcome we are trying to predict</p></li>
+</ul>
+<p><img alt="Spam filter" src="../_images/01_spam_filter.png" /></p>
+</div>
+<div class="section" id="example-of-unsupervised-learning">
+<h2>Example of Unsupervised Learning<a class="headerlink" href="#example-of-unsupervised-learning" title="Permalink to this headline">¶</a></h2>
+<p>Extracting structure from data</p>
+<ul class="simple">
+<li><p>Example: Segment grocery store shoppers into clusters that exhibit similar behaviors</p></li>
+<li><p>There is no “right answer”</p></li>
+</ul>
+<p><img alt="Clustering" src="../_images/01_clustering.png" /></p>
+<p>The primary goal of supervised learning is to build a model that “generalizes”: It accurately predicts the <strong>future</strong> rather than the <strong>past</strong>!</p>
+</div>
+<div class="section" id="machine-learning-terminology">
+<h2>Machine learning terminology<a class="headerlink" href="#machine-learning-terminology" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Each row is an <strong>observation</strong> (also known as: sample, example, instance, record)</p></li>
+<li><p>Each column is a <strong>feature</strong> (also known as: predictor, attribute, independent variable, input, regressor, covariate)</p></li>
+</ul>
+<ul class="simple">
+<li><p>Each value we are predicting is the <strong>response</strong> (also known as: target, outcome, label, dependent variable)</p></li>
+<li><p><strong>Classification</strong> is supervised learning in which the response is categorical</p></li>
+<li><p><strong>Regression</strong> is supervised learning in which the response is ordered and continuous</p></li>
+</ul>
+<p><img alt="" src="../_images/datatypes.png" /></p>
+</div>
+<div class="section" id="questions-about-machine-learning">
+<h2>Questions about machine learning<a class="headerlink" href="#questions-about-machine-learning" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>How do I choose <strong>which attributes</strong> of my data to include in the model?</p></li>
+<li><p>How do I choose <strong>which model</strong> to use?</p></li>
+<li><p>How do I <strong>optimize</strong> this model for best performance?</p></li>
+<li><p>How do I ensure that I’m building a model that will <strong>generalize</strong> to unseen data?</p></li>
+<li><p>Can I <strong>estimate</strong> how well my model is likely to perform on unseen data?</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "hossainlab/aml",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">Applied Machine Learning</a>
+    <a class='right-next' id="next-link" href="01-Machine-Learning-Terminology.html" title="next page">Getting Started</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jubayer Hossain<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
