@@ -15,7 +15,12 @@ Book documentation.
 
 
 **References** <hr>
-
+* [An Introductionto Statistical Learning](https://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf)
 * [Python Machine Learning Cookbook](https://www.oreilly.com/library/view/python-machine-learning/9781786464477/)
 * [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
-* [Machine Learning Mastery with Python by Jason Brownlee](#)
+* [Machine Learning Mastery with Python by Jason Brownlee](https://machinelearningmastery.com/)
+* [Machine Learning Full Course - by edurekha](https://youtu.be/GwIo3gDZCVQ?list=PL9ooVrP1hQOHUfd-g8GUpKI3hHOwM_9Dn)
+* [Machine Learning Course 10 Hours Long by Intellipaat](https://youtu.be/uOVhmOzX4VE)
+* [Machine Learning Algorithms Explanation by Simplilearn](https://www.youtube.com/playlist?list=PLEiEAq2VkUULNa6MHQAZSOBxzB6HHFXj4)
+* [Machine Learni Course by DataSchool](https://www.dataschool.io/ml-courses/)
+* [Applied Machine Learning by University of Michigan](https://www.coursera.org/learn/python-machine-learning)
