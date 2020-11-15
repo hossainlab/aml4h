@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Understand Data with Descriptive Statistics
+# # Exploring Data with Descriptive Statistics
 
 # ## Import Libraries 
 

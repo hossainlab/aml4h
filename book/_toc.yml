@@ -3,6 +3,5 @@
 - part: Basics
   chapters:
   - file: notebooks/00-Introduction-to-Machine-Learning
-  - file: notebooks/01-Machine-Learning-Terminology
-  - file: notebooks/02-Exploring-Data-with-Descriptive-Statistics
-  - file: notebooks/03-Exploring-Data-wtih-Visualization
+  - file: notebooks/01-Exploring-Data-with-Descriptive-Statistics
+  - file: notebooks/02-Exploring-Data-wtih-Visualization
