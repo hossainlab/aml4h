@@ -217,8 +217,52 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#univariate-plot">
-   Univariate Plot
+  <a class="reference internal nav-link" href="#dataset">
+   Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#univariate-plots">
+   Univariate Plots
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#histograms">
+     Histograms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#density-plots">
+     Density Plots
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boxplots">
+     Boxplots
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multivariate-plots">
+   Multivariate Plots
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#correlation-matrix-plot">
+     Correlation Matrix Plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plot">
+     Scatter Plot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pair-plot">
+   Pair Plot
   </a>
  </li>
 </ul>
@@ -234,12 +278,20 @@
                 
   <div class="section" id="exploring-data-with-visualization">
 <h1>Exploring Data with Visualization<a class="headerlink" href="#exploring-data-with-visualization" title="Permalink to this headline">¶</a></h1>
+<p>The fastest way to learn more about your data is to use data visualization.</p>
+<blockquote>
+<div><p>“A picture is worth a thousand words” Because of the way the human brain processes information, using charts or graphs to visualize large amounts of complex data is easier than poring over spreadsheets or reports. Data visualization is a quick, easy way to convey concepts in a universal manner – and you can experiment with different scenarios by making slight adjustments.</p>
+</div></blockquote>
+<p>In this notebook, You’ll learn data visualization technique using Pandas and Matplotlib</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">from</span> <span class="nn">pandas.plotting</span> <span class="kn">import</span> <span class="n">scatter_matrix</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+
+<span class="c1"># set options </span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.width&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -248,16 +300,24 @@
 </div>
 </div>
 </div>
+<div class="section" id="dataset">
+<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Pima Indians Diabetes Database</p></li>
+<li><p>Data Source - <a class="reference external" href="https://www.kaggle.com/uciml/pima-indians-diabetes-database">Kaggle</a></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/diabetes.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read data </span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/diabetes.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># examine first few rows </span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> 
 </pre></div>
 </div>
 </div>
@@ -356,38 +416,26 @@
 </table>
 </div></div></div>
 </div>
-<div class="section" id="univariate-plot">
-<h2>Univariate Plot<a class="headerlink" href="#univariate-plot" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="univariate-plots">
+<h2>Univariate Plots<a class="headerlink" href="#univariate-plots" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Histograms</p></li>
 <li><p>Density Plot</p></li>
 <li><p>Box and Whisker Plots</p></li>
 </ul>
+<div class="section" id="histograms">
+<h3>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a></h3>
+<p>4 Main Aspects</p>
+<ul class="simple">
+<li><p><strong>Shape</strong>: Overall appearance of histogram. Can be symmetric, bell-shaped, left skewed, right skewed, etc.</p></li>
+<li><p><strong>Center</strong>: Mean or Median</p></li>
+<li><p><strong>Spread</strong>: How far our data spreads. Range, Interquartile Range (IQR),standard deviation, variance.</p></li>
+<li><p><strong>Outliers</strong>: Data points that fall far from the bulk of the data</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/02-Exploring-Data-wtih-Visualization_5_0.png" src="../_images/02-Exploring-Data-wtih-Visualization_5_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/02-Exploring-Data-wtih-Visualization_6_0.png" src="../_images/02-Exploring-Data-wtih-Visualization_6_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </pre></div>
 </div>
@@ -396,9 +444,62 @@
 <img alt="../_images/02-Exploring-Data-wtih-Visualization_7_0.png" src="../_images/02-Exploring-Data-wtih-Visualization_7_0.png" />
 </div>
 </div>
+</div>
+<div class="section" id="density-plots">
+<h3>Density Plots<a class="headerlink" href="#density-plots" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Density plots are another way of getting a quick idea of the distribution of each attribute.</p></li>
+<li><p>The plots look like an abstracted histogram with a smooth curve drawn through the top of each bin,much like your eye tried to do with the histograms.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02-Exploring-Data-wtih-Visualization_9_0.png" src="../_images/02-Exploring-Data-wtih-Visualization_9_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="boxplots">
+<h3>Boxplots<a class="headerlink" href="#boxplots" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Boxplots provide a graphical picture of the five-number summary: showing center (median), spread (IQR and range), and identifies potential outliers.</p></li>
+<li><p>Boxplots can hide some shape aspects(histograms do better job at displaying shape)</p></li>
+<li><p>Side-by-Side Boxplots are useful for comparing two or more sets of observations.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02-Exploring-Data-wtih-Visualization_11_0.png" src="../_images/02-Exploring-Data-wtih-Visualization_11_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multivariate-plots">
+<h2>Multivariate Plots<a class="headerlink" href="#multivariate-plots" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Correlation Matrix Plot</p></li>
+<li><p>Scatter Plot</p></li>
+</ul>
+<div class="section" id="correlation-matrix-plot">
+<h3>Correlation Matrix Plot<a class="headerlink" href="#correlation-matrix-plot" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Correlation gives an indication of how related the changes are between two variables.</p></li>
+<li><p>If two variables change in the same direction they are positively correlated.</p></li>
+<li><p>If they change in opposite directions together (one goes up, one goes down), then they are negatively correlated.</p></li>
+<li><p>This is useful to know, because some machine learning algorithms like linear and logistic regression can have poor performance if there are highly correlated input variables in your data.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">corr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span> 
 <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -406,7 +507,56 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02-Exploring-Data-wtih-Visualization_8_0.png" src="../_images/02-Exploring-Data-wtih-Visualization_8_0.png" />
+<img alt="../_images/02-Exploring-Data-wtih-Visualization_14_0.png" src="../_images/02-Exploring-Data-wtih-Visualization_14_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="scatter-plot">
+<h3>Scatter Plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>A scatter plot shows the relationship between two variables as dots in two dimensions, one axis for each attribute.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;BMI&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;BloodPressu&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pair-plot">
+<h2>Pair Plot<a class="headerlink" href="#pair-plot" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Plot pairwise relationships in a dataset.</p></li>
+<li><p>By default, this function will create a grid of Axes such that each numeric variable in data will by shared across the y-axes across a single row and the x-axes across a single column. The diagonal plots are treated differently: a univariate distribution plot is drawn to show the marginal distribution of the data in each column.</p></li>
+<li><p>It is also possible to show a subset of variables or plot different variables on the rows and columns.
+<a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.pairplot.html"><strong>See More</strong></a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f085d3e4580&gt;
+</pre></div>
+</div>
+<img alt="../_images/02-Exploring-Data-wtih-Visualization_18_1.png" src="../_images/02-Exploring-Data-wtih-Visualization_18_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Outcome&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f085700cd30&gt;
+</pre></div>
+</div>
+<img alt="../_images/02-Exploring-Data-wtih-Visualization_19_1.png" src="../_images/02-Exploring-Data-wtih-Visualization_19_1.png" />
 </div>
 </div>
 </div>

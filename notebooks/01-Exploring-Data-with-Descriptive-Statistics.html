@@ -228,8 +228,38 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exploring-data">
-   Exploring Data
+  <a class="reference internal nav-link" href="#peek-at-your-data">
+   Peek at Your Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dimensions">
+   Dimensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-type-for-each-attribute">
+   Data Type For Each Attribute
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#descriptive-statistics">
+   Descriptive Statistics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#class-distribution-classification-only">
+   Class Distribution(Classification Only)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correlations-between-attributes">
+   Correlations Between Attributes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#skewness">
+   Skewness
   </a>
  </li>
 </ul>
@@ -245,17 +275,17 @@
                 
   <div class="section" id="exploring-data-with-descriptive-statistics">
 <h1>Exploring Data with Descriptive Statistics<a class="headerlink" href="#exploring-data-with-descriptive-statistics" title="Permalink to this headline">¶</a></h1>
+<p>You must understand your data in order to get better results. In this notebook I’ll explain you that you can use Python to better understand your data. There is no substitute for looking at the raw data. Looking at the raw data can reveal <strong>insights</strong> that you cannot get any other way.</p>
 <div class="section" id="import-libraries">
 <h2>Import Libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># for data manipulation</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># for linear algebra </span>
+
+<span class="c1"># set options </span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.width&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline 
 </pre></div>
 </div>
 </div>
@@ -263,19 +293,25 @@
 </div>
 <div class="section" id="load-dataset">
 <h2>Load Dataset<a class="headerlink" href="#load-dataset" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>In this example, I’ll use heart disease dataset</p></li>
+<li><p>Data Source - <a class="reference external" href="https://www.kaggle.com/ronitf/heart-disease-uci">Kaggle</a></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/diabetes.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load data </span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/heart.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="exploring-data">
-<h2>Exploring Data<a class="headerlink" href="#exploring-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="peek-at-your-data">
+<h2>Peek at Your Data<a class="headerlink" href="#peek-at-your-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># examine first few rows </span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> 
 </pre></div>
 </div>
 </div>
@@ -298,76 +334,106 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Pregnancies</th>
-      <th>Glucose</th>
-      <th>BloodPressure</th>
-      <th>SkinThickness</th>
-      <th>Insulin</th>
-      <th>BMI</th>
-      <th>DiabetesPedigreeFunction</th>
-      <th>Age</th>
-      <th>Outcome</th>
+      <th>age</th>
+      <th>sex</th>
+      <th>cp</th>
+      <th>trestbps</th>
+      <th>chol</th>
+      <th>fbs</th>
+      <th>restecg</th>
+      <th>thalach</th>
+      <th>exang</th>
+      <th>oldpeak</th>
+      <th>slope</th>
+      <th>ca</th>
+      <th>thal</th>
+      <th>target</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>6</td>
-      <td>148</td>
-      <td>72</td>
-      <td>35</td>
+      <td>63</td>
+      <td>1</td>
+      <td>3</td>
+      <td>145</td>
+      <td>233</td>
+      <td>1</td>
       <td>0</td>
-      <td>33.6</td>
-      <td>0.627</td>
-      <td>50</td>
+      <td>150</td>
+      <td>0</td>
+      <td>2.3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
       <td>1</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>37</td>
       <td>1</td>
-      <td>85</td>
-      <td>66</td>
-      <td>29</td>
+      <td>2</td>
+      <td>130</td>
+      <td>250</td>
       <td>0</td>
-      <td>26.6</td>
-      <td>0.351</td>
-      <td>31</td>
+      <td>1</td>
+      <td>187</td>
       <td>0</td>
+      <td>3.5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>8</td>
-      <td>183</td>
-      <td>64</td>
+      <td>41</td>
+      <td>0</td>
+      <td>1</td>
+      <td>130</td>
+      <td>204</td>
       <td>0</td>
       <td>0</td>
-      <td>23.3</td>
-      <td>0.672</td>
-      <td>32</td>
+      <td>172</td>
+      <td>0</td>
+      <td>1.4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
       <td>1</td>
     </tr>
     <tr>
       <th>3</th>
+      <td>56</td>
       <td>1</td>
-      <td>89</td>
-      <td>66</td>
-      <td>23</td>
-      <td>94</td>
-      <td>28.1</td>
-      <td>0.167</td>
-      <td>21</td>
+      <td>1</td>
+      <td>120</td>
+      <td>236</td>
       <td>0</td>
+      <td>1</td>
+      <td>178</td>
+      <td>0</td>
+      <td>0.8</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>4</th>
+      <td>57</td>
       <td>0</td>
-      <td>137</td>
-      <td>40</td>
-      <td>35</td>
-      <td>168</td>
-      <td>43.1</td>
-      <td>2.288</td>
-      <td>33</td>
+      <td>0</td>
+      <td>120</td>
+      <td>354</td>
+      <td>0</td>
+      <td>1</td>
+      <td>163</td>
+      <td>1</td>
+      <td>0.6</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -376,17 +442,404 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shape </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># examine last few rows </span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>cp</th>
+      <th>trestbps</th>
+      <th>chol</th>
+      <th>fbs</th>
+      <th>restecg</th>
+      <th>thalach</th>
+      <th>exang</th>
+      <th>oldpeak</th>
+      <th>slope</th>
+      <th>ca</th>
+      <th>thal</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>298</th>
+      <td>57</td>
+      <td>0</td>
+      <td>0</td>
+      <td>140</td>
+      <td>241</td>
+      <td>0</td>
+      <td>1</td>
+      <td>123</td>
+      <td>1</td>
+      <td>0.2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>299</th>
+      <td>45</td>
+      <td>1</td>
+      <td>3</td>
+      <td>110</td>
+      <td>264</td>
+      <td>0</td>
+      <td>1</td>
+      <td>132</td>
+      <td>0</td>
+      <td>1.2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>300</th>
+      <td>68</td>
+      <td>1</td>
+      <td>0</td>
+      <td>144</td>
+      <td>193</td>
+      <td>1</td>
+      <td>1</td>
+      <td>141</td>
+      <td>0</td>
+      <td>3.4</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>301</th>
+      <td>57</td>
+      <td>1</td>
+      <td>0</td>
+      <td>130</td>
+      <td>131</td>
+      <td>0</td>
+      <td>1</td>
+      <td>115</td>
+      <td>1</td>
+      <td>1.2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>302</th>
+      <td>57</td>
+      <td>0</td>
+      <td>1</td>
+      <td>130</td>
+      <td>236</td>
+      <td>0</td>
+      <td>0</td>
+      <td>174</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># examine specific number of rows </span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>cp</th>
+      <th>trestbps</th>
+      <th>chol</th>
+      <th>fbs</th>
+      <th>restecg</th>
+      <th>thalach</th>
+      <th>exang</th>
+      <th>oldpeak</th>
+      <th>slope</th>
+      <th>ca</th>
+      <th>thal</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>63</td>
+      <td>1</td>
+      <td>3</td>
+      <td>145</td>
+      <td>233</td>
+      <td>1</td>
+      <td>0</td>
+      <td>150</td>
+      <td>0</td>
+      <td>2.3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>37</td>
+      <td>1</td>
+      <td>2</td>
+      <td>130</td>
+      <td>250</td>
+      <td>0</td>
+      <td>1</td>
+      <td>187</td>
+      <td>0</td>
+      <td>3.5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>41</td>
+      <td>0</td>
+      <td>1</td>
+      <td>130</td>
+      <td>204</td>
+      <td>0</td>
+      <td>0</td>
+      <td>172</td>
+      <td>0</td>
+      <td>1.4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>56</td>
+      <td>1</td>
+      <td>1</td>
+      <td>120</td>
+      <td>236</td>
+      <td>0</td>
+      <td>1</td>
+      <td>178</td>
+      <td>0</td>
+      <td>0.8</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>57</td>
+      <td>0</td>
+      <td>0</td>
+      <td>120</td>
+      <td>354</td>
+      <td>0</td>
+      <td>1</td>
+      <td>163</td>
+      <td>1</td>
+      <td>0.6</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>57</td>
+      <td>1</td>
+      <td>0</td>
+      <td>140</td>
+      <td>192</td>
+      <td>0</td>
+      <td>1</td>
+      <td>148</td>
+      <td>0</td>
+      <td>0.4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>56</td>
+      <td>0</td>
+      <td>1</td>
+      <td>140</td>
+      <td>294</td>
+      <td>0</td>
+      <td>0</td>
+      <td>153</td>
+      <td>0</td>
+      <td>1.3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>44</td>
+      <td>1</td>
+      <td>1</td>
+      <td>120</td>
+      <td>263</td>
+      <td>0</td>
+      <td>1</td>
+      <td>173</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>52</td>
+      <td>1</td>
+      <td>2</td>
+      <td>172</td>
+      <td>199</td>
+      <td>1</td>
+      <td>1</td>
+      <td>162</td>
+      <td>0</td>
+      <td>0.5</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>57</td>
+      <td>1</td>
+      <td>2</td>
+      <td>150</td>
+      <td>168</td>
+      <td>0</td>
+      <td>1</td>
+      <td>174</td>
+      <td>0</td>
+      <td>1.6</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="dimensions">
+<h2>Dimensions<a class="headerlink" href="#dimensions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Too many rows and algorithms may take too long to train. Too few and perhaps you do
+not have enough data to train the algorithms.</p></li>
+<li><p>Too many features and some algorithms can be distracted or suffer poor performance due
+to the curse of dimensionality.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check shape of data </span>
 <span class="n">df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(768, 9)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(303, 14)
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># no. of rows </span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>303
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># no. of columns </span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="data-type-for-each-attribute">
+<h2>Data Type For Each Attribute<a class="headerlink" href="#data-type-for-each-attribute" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dtypes </span>
@@ -395,23 +848,46 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pregnancies                   int64
-Glucose                       int64
-BloodPressure                 int64
-SkinThickness                 int64
-Insulin                       int64
-BMI                         float64
-DiabetesPedigreeFunction    float64
-Age                           int64
-Outcome                       int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age           int64
+sex           int64
+cp            int64
+trestbps      int64
+chol          int64
+fbs           int64
+restecg       int64
+thalach       int64
+exang         int64
+oldpeak     float64
+slope         int64
+ca            int64
+thal          int64
+target        int64
 dtype: object
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="descriptive-statistics">
+<h2>Descriptive Statistics<a class="headerlink" href="#descriptive-statistics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Count</p></li>
+<li><p>Mean</p></li>
+<li><p>Median</p></li>
+<li><p>Standard Deviation</p></li>
+<li><p>Five Number Summary</p>
+<ul>
+<li><p>Minimum</p></li>
+<li><p>25th Percentile</p></li>
+<li><p>50th Percentile</p></li>
+<li><p>75th Percentile</p></li>
+<li><p>Maximum</p></li>
+</ul>
+</li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># summary </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># summary stats </span>
 <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span> 
 </pre></div>
 </div>
@@ -435,112 +911,157 @@ dtype: object
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Pregnancies</th>
-      <th>Glucose</th>
-      <th>BloodPressure</th>
-      <th>SkinThickness</th>
-      <th>Insulin</th>
-      <th>BMI</th>
-      <th>DiabetesPedigreeFunction</th>
-      <th>Age</th>
-      <th>Outcome</th>
+      <th>age</th>
+      <th>sex</th>
+      <th>cp</th>
+      <th>trestbps</th>
+      <th>chol</th>
+      <th>fbs</th>
+      <th>restecg</th>
+      <th>thalach</th>
+      <th>exang</th>
+      <th>oldpeak</th>
+      <th>slope</th>
+      <th>ca</th>
+      <th>thal</th>
+      <th>target</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>count</th>
-      <td>768.000</td>
-      <td>768.000</td>
-      <td>768.000</td>
-      <td>768.000</td>
-      <td>768.000</td>
-      <td>768.000</td>
-      <td>768.000</td>
-      <td>768.000</td>
-      <td>768.000</td>
+      <td>303.000</td>
+      <td>303.000</td>
+      <td>303.000</td>
+      <td>303.000</td>
+      <td>303.000</td>
+      <td>303.000</td>
+      <td>303.000</td>
+      <td>303.000</td>
+      <td>303.000</td>
+      <td>303.000</td>
+      <td>303.000</td>
+      <td>303.000</td>
+      <td>303.000</td>
+      <td>303.000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>3.845</td>
-      <td>120.895</td>
-      <td>69.105</td>
-      <td>20.536</td>
-      <td>79.799</td>
-      <td>31.993</td>
-      <td>0.472</td>
-      <td>33.241</td>
-      <td>0.349</td>
+      <td>54.366</td>
+      <td>0.683</td>
+      <td>0.967</td>
+      <td>131.624</td>
+      <td>246.264</td>
+      <td>0.149</td>
+      <td>0.528</td>
+      <td>149.647</td>
+      <td>0.327</td>
+      <td>1.040</td>
+      <td>1.399</td>
+      <td>0.729</td>
+      <td>2.314</td>
+      <td>0.545</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>3.370</td>
-      <td>31.973</td>
-      <td>19.356</td>
-      <td>15.952</td>
-      <td>115.244</td>
-      <td>7.884</td>
-      <td>0.331</td>
-      <td>11.760</td>
-      <td>0.477</td>
+      <td>9.082</td>
+      <td>0.466</td>
+      <td>1.032</td>
+      <td>17.538</td>
+      <td>51.831</td>
+      <td>0.356</td>
+      <td>0.526</td>
+      <td>22.905</td>
+      <td>0.470</td>
+      <td>1.161</td>
+      <td>0.616</td>
+      <td>1.023</td>
+      <td>0.612</td>
+      <td>0.499</td>
     </tr>
     <tr>
       <th>min</th>
+      <td>29.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>94.000</td>
+      <td>126.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>71.000</td>
       <td>0.000</td>
       <td>0.000</td>
       <td>0.000</td>
       <td>0.000</td>
       <td>0.000</td>
-      <td>0.000</td>
-      <td>0.078</td>
-      <td>21.000</td>
       <td>0.000</td>
     </tr>
     <tr>
       <th>25%</th>
+      <td>47.500</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>120.000</td>
+      <td>211.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>133.500</td>
+      <td>0.000</td>
+      <td>0.000</td>
       <td>1.000</td>
-      <td>99.000</td>
-      <td>62.000</td>
       <td>0.000</td>
-      <td>0.000</td>
-      <td>27.300</td>
-      <td>0.244</td>
-      <td>24.000</td>
+      <td>2.000</td>
       <td>0.000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>3.000</td>
-      <td>117.000</td>
-      <td>72.000</td>
-      <td>23.000</td>
-      <td>30.500</td>
-      <td>32.000</td>
-      <td>0.372</td>
-      <td>29.000</td>
+      <td>55.000</td>
+      <td>1.000</td>
+      <td>1.000</td>
+      <td>130.000</td>
+      <td>240.000</td>
       <td>0.000</td>
+      <td>1.000</td>
+      <td>153.000</td>
+      <td>0.000</td>
+      <td>0.800</td>
+      <td>1.000</td>
+      <td>0.000</td>
+      <td>2.000</td>
+      <td>1.000</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>6.000</td>
-      <td>140.250</td>
-      <td>80.000</td>
-      <td>32.000</td>
-      <td>127.250</td>
-      <td>36.600</td>
-      <td>0.626</td>
-      <td>41.000</td>
+      <td>61.000</td>
+      <td>1.000</td>
+      <td>2.000</td>
+      <td>140.000</td>
+      <td>274.500</td>
+      <td>0.000</td>
+      <td>1.000</td>
+      <td>166.000</td>
+      <td>1.000</td>
+      <td>1.600</td>
+      <td>2.000</td>
+      <td>1.000</td>
+      <td>3.000</td>
       <td>1.000</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>17.000</td>
-      <td>199.000</td>
-      <td>122.000</td>
-      <td>99.000</td>
-      <td>846.000</td>
-      <td>67.100</td>
-      <td>2.420</td>
-      <td>81.000</td>
+      <td>77.000</td>
+      <td>1.000</td>
+      <td>3.000</td>
+      <td>200.000</td>
+      <td>564.000</td>
+      <td>1.000</td>
+      <td>2.000</td>
+      <td>202.000</td>
+      <td>1.000</td>
+      <td>6.200</td>
+      <td>2.000</td>
+      <td>4.000</td>
+      <td>3.000</td>
       <td>1.000</td>
     </tr>
   </tbody>
@@ -549,22 +1070,264 @@ dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># class distribution </span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outcome&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># transpose summary stats </span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    500
-1    268
-Name: Outcome, dtype: int64
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>age</th>
+      <td>303.0</td>
+      <td>54.366</td>
+      <td>9.082</td>
+      <td>29.0</td>
+      <td>47.5</td>
+      <td>55.0</td>
+      <td>61.0</td>
+      <td>77.0</td>
+    </tr>
+    <tr>
+      <th>sex</th>
+      <td>303.0</td>
+      <td>0.683</td>
+      <td>0.466</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>cp</th>
+      <td>303.0</td>
+      <td>0.967</td>
+      <td>1.032</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>trestbps</th>
+      <td>303.0</td>
+      <td>131.624</td>
+      <td>17.538</td>
+      <td>94.0</td>
+      <td>120.0</td>
+      <td>130.0</td>
+      <td>140.0</td>
+      <td>200.0</td>
+    </tr>
+    <tr>
+      <th>chol</th>
+      <td>303.0</td>
+      <td>246.264</td>
+      <td>51.831</td>
+      <td>126.0</td>
+      <td>211.0</td>
+      <td>240.0</td>
+      <td>274.5</td>
+      <td>564.0</td>
+    </tr>
+    <tr>
+      <th>fbs</th>
+      <td>303.0</td>
+      <td>0.149</td>
+      <td>0.356</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>restecg</th>
+      <td>303.0</td>
+      <td>0.528</td>
+      <td>0.526</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>thalach</th>
+      <td>303.0</td>
+      <td>149.647</td>
+      <td>22.905</td>
+      <td>71.0</td>
+      <td>133.5</td>
+      <td>153.0</td>
+      <td>166.0</td>
+      <td>202.0</td>
+    </tr>
+    <tr>
+      <th>exang</th>
+      <td>303.0</td>
+      <td>0.327</td>
+      <td>0.470</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>oldpeak</th>
+      <td>303.0</td>
+      <td>1.040</td>
+      <td>1.161</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.8</td>
+      <td>1.6</td>
+      <td>6.2</td>
+    </tr>
+    <tr>
+      <th>slope</th>
+      <td>303.0</td>
+      <td>1.399</td>
+      <td>0.616</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>ca</th>
+      <td>303.0</td>
+      <td>0.729</td>
+      <td>1.023</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>thal</th>
+      <td>303.0</td>
+      <td>2.314</td>
+      <td>0.612</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>target</th>
+      <td>303.0</td>
+      <td>0.545</td>
+      <td>0.499</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="class-distribution-classification-only">
+<h2>Class Distribution(Classification Only)<a class="headerlink" href="#class-distribution-classification-only" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># class distribution </span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1    165
+0    138
+Name: target, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># correlation </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># class distribution </span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1    0.545
+0    0.455
+Name: target, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># class distribution using group by </span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>target
+0    138
+1    165
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="correlations-between-attributes">
+<h2>Correlations Between Attributes<a class="headerlink" href="#correlations-between-attributes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Correlation refers to the relationship between two variables and how they may or may not
+change together.</p></li>
+<li><p>The most common method for calculating correlation is <strong>Pearson’s</strong> Correlation
+Coefficient, that assumes a normal distribution of the attributes involved.</p></li>
+<li><p>A correlation of -1 or 1 shows a full negative or positive correlation respectively.</p></li>
+<li><p>Whereas a value of 0 shows no correlation at all.</p></li>
+<li><p>Some machine learning algorithms like linear and logistic regression can suffer
+<strong>poor</strong> performance if there are <strong>highly</strong> correlated attributes in your dataset.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># correlation: Pearson’s by default </span>
 <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -588,130 +1351,275 @@ Name: Outcome, dtype: int64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Pregnancies</th>
-      <th>Glucose</th>
-      <th>BloodPressure</th>
-      <th>SkinThickness</th>
-      <th>Insulin</th>
-      <th>BMI</th>
-      <th>DiabetesPedigreeFunction</th>
-      <th>Age</th>
-      <th>Outcome</th>
+      <th>age</th>
+      <th>sex</th>
+      <th>cp</th>
+      <th>trestbps</th>
+      <th>chol</th>
+      <th>fbs</th>
+      <th>restecg</th>
+      <th>thalach</th>
+      <th>exang</th>
+      <th>oldpeak</th>
+      <th>slope</th>
+      <th>ca</th>
+      <th>thal</th>
+      <th>target</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>Pregnancies</th>
+      <th>age</th>
       <td>1.000</td>
-      <td>0.129</td>
-      <td>0.141</td>
-      <td>-0.082</td>
-      <td>-0.074</td>
-      <td>0.018</td>
-      <td>-0.034</td>
-      <td>0.544</td>
-      <td>0.222</td>
+      <td>-0.098</td>
+      <td>-0.069</td>
+      <td>0.279</td>
+      <td>0.214</td>
+      <td>0.121</td>
+      <td>-0.116</td>
+      <td>-0.399</td>
+      <td>0.097</td>
+      <td>0.210</td>
+      <td>-0.169</td>
+      <td>0.276</td>
+      <td>0.068</td>
+      <td>-0.225</td>
     </tr>
     <tr>
-      <th>Glucose</th>
-      <td>0.129</td>
+      <th>sex</th>
+      <td>-0.098</td>
       <td>1.000</td>
-      <td>0.153</td>
-      <td>0.057</td>
-      <td>0.331</td>
-      <td>0.221</td>
-      <td>0.137</td>
-      <td>0.264</td>
-      <td>0.467</td>
+      <td>-0.049</td>
+      <td>-0.057</td>
+      <td>-0.198</td>
+      <td>0.045</td>
+      <td>-0.058</td>
+      <td>-0.044</td>
+      <td>0.142</td>
+      <td>0.096</td>
+      <td>-0.031</td>
+      <td>0.118</td>
+      <td>0.210</td>
+      <td>-0.281</td>
     </tr>
     <tr>
-      <th>BloodPressure</th>
-      <td>0.141</td>
-      <td>0.153</td>
+      <th>cp</th>
+      <td>-0.069</td>
+      <td>-0.049</td>
       <td>1.000</td>
-      <td>0.207</td>
-      <td>0.089</td>
-      <td>0.282</td>
-      <td>0.041</td>
-      <td>0.240</td>
-      <td>0.065</td>
+      <td>0.048</td>
+      <td>-0.077</td>
+      <td>0.094</td>
+      <td>0.044</td>
+      <td>0.296</td>
+      <td>-0.394</td>
+      <td>-0.149</td>
+      <td>0.120</td>
+      <td>-0.181</td>
+      <td>-0.162</td>
+      <td>0.434</td>
     </tr>
     <tr>
-      <th>SkinThickness</th>
-      <td>-0.082</td>
-      <td>0.057</td>
-      <td>0.207</td>
+      <th>trestbps</th>
+      <td>0.279</td>
+      <td>-0.057</td>
+      <td>0.048</td>
       <td>1.000</td>
-      <td>0.437</td>
-      <td>0.393</td>
-      <td>0.184</td>
+      <td>0.123</td>
+      <td>0.178</td>
       <td>-0.114</td>
-      <td>0.075</td>
+      <td>-0.047</td>
+      <td>0.068</td>
+      <td>0.193</td>
+      <td>-0.121</td>
+      <td>0.101</td>
+      <td>0.062</td>
+      <td>-0.145</td>
     </tr>
     <tr>
-      <th>Insulin</th>
-      <td>-0.074</td>
-      <td>0.331</td>
-      <td>0.089</td>
-      <td>0.437</td>
+      <th>chol</th>
+      <td>0.214</td>
+      <td>-0.198</td>
+      <td>-0.077</td>
+      <td>0.123</td>
       <td>1.000</td>
-      <td>0.198</td>
-      <td>0.185</td>
-      <td>-0.042</td>
-      <td>0.131</td>
+      <td>0.013</td>
+      <td>-0.151</td>
+      <td>-0.010</td>
+      <td>0.067</td>
+      <td>0.054</td>
+      <td>-0.004</td>
+      <td>0.071</td>
+      <td>0.099</td>
+      <td>-0.085</td>
     </tr>
     <tr>
-      <th>BMI</th>
-      <td>0.018</td>
-      <td>0.221</td>
-      <td>0.282</td>
-      <td>0.393</td>
-      <td>0.198</td>
+      <th>fbs</th>
+      <td>0.121</td>
+      <td>0.045</td>
+      <td>0.094</td>
+      <td>0.178</td>
+      <td>0.013</td>
       <td>1.000</td>
-      <td>0.141</td>
-      <td>0.036</td>
-      <td>0.293</td>
+      <td>-0.084</td>
+      <td>-0.009</td>
+      <td>0.026</td>
+      <td>0.006</td>
+      <td>-0.060</td>
+      <td>0.138</td>
+      <td>-0.032</td>
+      <td>-0.028</td>
     </tr>
     <tr>
-      <th>DiabetesPedigreeFunction</th>
-      <td>-0.034</td>
-      <td>0.137</td>
-      <td>0.041</td>
-      <td>0.184</td>
-      <td>0.185</td>
-      <td>0.141</td>
-      <td>1.000</td>
-      <td>0.034</td>
-      <td>0.174</td>
-    </tr>
-    <tr>
-      <th>Age</th>
-      <td>0.544</td>
-      <td>0.264</td>
-      <td>0.240</td>
+      <th>restecg</th>
+      <td>-0.116</td>
+      <td>-0.058</td>
+      <td>0.044</td>
       <td>-0.114</td>
-      <td>-0.042</td>
-      <td>0.036</td>
-      <td>0.034</td>
+      <td>-0.151</td>
+      <td>-0.084</td>
       <td>1.000</td>
-      <td>0.238</td>
+      <td>0.044</td>
+      <td>-0.071</td>
+      <td>-0.059</td>
+      <td>0.093</td>
+      <td>-0.072</td>
+      <td>-0.012</td>
+      <td>0.137</td>
     </tr>
     <tr>
-      <th>Outcome</th>
-      <td>0.222</td>
-      <td>0.467</td>
-      <td>0.065</td>
-      <td>0.075</td>
-      <td>0.131</td>
-      <td>0.293</td>
-      <td>0.174</td>
-      <td>0.238</td>
+      <th>thalach</th>
+      <td>-0.399</td>
+      <td>-0.044</td>
+      <td>0.296</td>
+      <td>-0.047</td>
+      <td>-0.010</td>
+      <td>-0.009</td>
+      <td>0.044</td>
+      <td>1.000</td>
+      <td>-0.379</td>
+      <td>-0.344</td>
+      <td>0.387</td>
+      <td>-0.213</td>
+      <td>-0.096</td>
+      <td>0.422</td>
+    </tr>
+    <tr>
+      <th>exang</th>
+      <td>0.097</td>
+      <td>0.142</td>
+      <td>-0.394</td>
+      <td>0.068</td>
+      <td>0.067</td>
+      <td>0.026</td>
+      <td>-0.071</td>
+      <td>-0.379</td>
+      <td>1.000</td>
+      <td>0.288</td>
+      <td>-0.258</td>
+      <td>0.116</td>
+      <td>0.207</td>
+      <td>-0.437</td>
+    </tr>
+    <tr>
+      <th>oldpeak</th>
+      <td>0.210</td>
+      <td>0.096</td>
+      <td>-0.149</td>
+      <td>0.193</td>
+      <td>0.054</td>
+      <td>0.006</td>
+      <td>-0.059</td>
+      <td>-0.344</td>
+      <td>0.288</td>
+      <td>1.000</td>
+      <td>-0.578</td>
+      <td>0.223</td>
+      <td>0.210</td>
+      <td>-0.431</td>
+    </tr>
+    <tr>
+      <th>slope</th>
+      <td>-0.169</td>
+      <td>-0.031</td>
+      <td>0.120</td>
+      <td>-0.121</td>
+      <td>-0.004</td>
+      <td>-0.060</td>
+      <td>0.093</td>
+      <td>0.387</td>
+      <td>-0.258</td>
+      <td>-0.578</td>
+      <td>1.000</td>
+      <td>-0.080</td>
+      <td>-0.105</td>
+      <td>0.346</td>
+    </tr>
+    <tr>
+      <th>ca</th>
+      <td>0.276</td>
+      <td>0.118</td>
+      <td>-0.181</td>
+      <td>0.101</td>
+      <td>0.071</td>
+      <td>0.138</td>
+      <td>-0.072</td>
+      <td>-0.213</td>
+      <td>0.116</td>
+      <td>0.223</td>
+      <td>-0.080</td>
+      <td>1.000</td>
+      <td>0.152</td>
+      <td>-0.392</td>
+    </tr>
+    <tr>
+      <th>thal</th>
+      <td>0.068</td>
+      <td>0.210</td>
+      <td>-0.162</td>
+      <td>0.062</td>
+      <td>0.099</td>
+      <td>-0.032</td>
+      <td>-0.012</td>
+      <td>-0.096</td>
+      <td>0.207</td>
+      <td>0.210</td>
+      <td>-0.105</td>
+      <td>0.152</td>
+      <td>1.000</td>
+      <td>-0.344</td>
+    </tr>
+    <tr>
+      <th>target</th>
+      <td>-0.225</td>
+      <td>-0.281</td>
+      <td>0.434</td>
+      <td>-0.145</td>
+      <td>-0.085</td>
+      <td>-0.028</td>
+      <td>0.137</td>
+      <td>0.422</td>
+      <td>-0.437</td>
+      <td>-0.431</td>
+      <td>0.346</td>
+      <td>-0.392</td>
+      <td>-0.344</td>
       <td>1.000</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+</div>
+<div class="section" id="skewness">
+<h2>Skewness<a class="headerlink" href="#skewness" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Skew refers to a distribution that is assumed <strong>Gaussian</strong> (normal or bell curve) that is shifted or
+squashed in one direction or another.</p></li>
+<li><p>Many machine learning algorithms assume a <strong>Gaussian or normal</strong> distribution.</p></li>
+<li><p>Knowing that an attribute has a skew may allow you to perform data preparation to correct the skew and later improve the accuracy of your models.</p></li>
+<li><p>The skew result show a positive (right) or negative (left) skew. Values closer to zero show less skew</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># skew </span>
@@ -720,15 +1628,20 @@ Name: Outcome, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pregnancies                 0.902
-Glucose                     0.174
-BloodPressure              -1.844
-SkinThickness               0.109
-Insulin                     2.272
-BMI                        -0.429
-DiabetesPedigreeFunction    1.920
-Age                         1.130
-Outcome                     0.635
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age        -0.202
+sex        -0.791
+cp          0.485
+trestbps    0.714
+chol        1.143
+fbs         1.987
+restecg     0.163
+thalach    -0.537
+exang       0.743
+oldpeak     1.270
+slope      -0.508
+ca          1.310
+thal       -0.477
+target     -0.180
 dtype: float64
 </pre></div>
 </div>
