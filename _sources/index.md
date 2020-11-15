@@ -22,5 +22,5 @@ Book documentation.
 * [Machine Learning Full Course - by edurekha](https://youtu.be/GwIo3gDZCVQ?list=PL9ooVrP1hQOHUfd-g8GUpKI3hHOwM_9Dn)
 * [Machine Learning Course 10 Hours Long by Intellipaat](https://youtu.be/uOVhmOzX4VE)
 * [Machine Learning Algorithms Explanation by Simplilearn](https://www.youtube.com/playlist?list=PLEiEAq2VkUULNa6MHQAZSOBxzB6HHFXj4)
-* [Machine Learni Course by DataSchool](https://www.dataschool.io/ml-courses/)
+* [Machine Learning Course by DataSchool](https://www.dataschool.io/ml-courses/)
 * [Applied Machine Learning by University of Michigan](https://www.coursera.org/learn/python-machine-learning)
