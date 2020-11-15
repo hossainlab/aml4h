@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Getting Started
+# # Machine Learning Terminology
 
 # ![Iris](../img/03_iris.png)
 
