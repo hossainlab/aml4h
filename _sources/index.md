@@ -1,4 +1,4 @@
-# Applied Machine Learning
+# Welcome 
 Welcome to `Applied Machine Learning`. This is a short sequence of notes on Machine Learning written by [Jubayer Hossian](https://jhossain.me/).
 
 This site is available online at [github](https://hossainlab.github.io/numpy/)
@@ -24,3 +24,4 @@ Book documentation.
 * [Machine Learning Algorithms Explanation by Simplilearn](https://www.youtube.com/playlist?list=PLEiEAq2VkUULNa6MHQAZSOBxzB6HHFXj4)
 * [Machine Learning Course by DataSchool](https://www.dataschool.io/ml-courses/)
 * [Applied Machine Learning by University of Michigan](https://www.coursera.org/learn/python-machine-learning)
+* [Supervised and Unsupervised Machine Learning Algorithms](https://machinelearningmastery.com/supervised-and-unsupervised-machine-learning-algorithms/)
