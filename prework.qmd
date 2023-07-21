@@ -11,4 +11,33 @@ Before starting the course, we recommend completing the following prework to ens
 
 1. Install Python: If you don't have Python installed on your system, download the latest version from the official website (<https://www.python.org/downloads/>) and follow the installation instructions for your operating system.
 
-2. Install Anaconda (Optional but recommended):
+2. Install Anaconda (Optional but recommended): Jupyter Notebook is an interactive environment widely used for data analysis and experimentation. We recommend using Jupyter Notebook to follow along with the course materials and complete the hands-on projects.
+
+If you installed Anaconda, you should already have Jupyter Notebook. To launch it, open the Anaconda Navigator, find Jupyter Notebook, and click "Launch." This will open a new tab in your web browser, where you can create and run Jupyter Notebooks.
+
+If you didn't install Anaconda, you can install Jupyter Notebook using pip:
+
+```python
+pip install jupyter
+```
+To start Jupyter Notebook, run the following command in your terminal or command prompt:
+
+```python
+jupyter notebook
+```
+This will launch Jupyter Notebook in your default web browser.
+
+3. Explore Healthcare Datasets (Optional): If you have access to healthcare datasets or public repositories, consider exploring some sample data related to medical records, medical imaging, or other healthcare-related information. This pre-exploration will give you an idea of the types of data you will be working with during the course.
+
+4. Check Course Resources: Before the course begins, ensure you have access to all the course materials, including lecture slides, code samples, and any additional resources provided by the instructor or the course platform.
+
+5. Get Excited and Stay Curious: Machine learning in healthcare offers incredible opportunities to improve patient outcomes and medical practices. Stay curious, be ready to ask questions, and embrace the challenges of applying AI in this critical domain.
+
+Congratulations on completing the prework! You are now well-prepared to embark on the journey of Applied Machine Learning for Healthcare (AML4H). We can't wait to have you participate in the course, where you will unlock the potential of data-driven precision in healthcare and contribute to shaping the future of medical technology. Let's get started! 🩺📈🤖
+
+
+
+
+
+
+
