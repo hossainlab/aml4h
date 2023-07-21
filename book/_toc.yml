@@ -1,7 +1,0 @@
-- file: index
-
-- part: Basics
-  chapters:
-  - file: notebooks/00-Introduction-to-Machine-Learning
-  - file: notebooks/01-Exploring-Data-with-Descriptive-Statistics
-  - file: notebooks/02-Exploring-Data-wtih-Visualization
