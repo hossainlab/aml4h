@@ -1,4 +1,4 @@
-# Applied Machine Learning
+# Applied Machine Learning for Healthcare 
 
 ### How to create your own Jupyter Book
 
