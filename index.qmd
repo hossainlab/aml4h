@@ -47,3 +47,5 @@ Applied Machine Learning for Healthcare (AML4H) is a dynamic and practical cours
 Medical professionals, data scientists, AI enthusiasts, and anyone passionate about transforming healthcare through technology. Basic knowledge of machine learning and healthcare concepts is recommended.
 
 Embark on this transformative journey where you'll gain the skills and insights to harness the potential of machine learning in revolutionizing the world of healthcare. Enroll now and become a trailblazer in the future of medical technology! 🩺💡
+
+

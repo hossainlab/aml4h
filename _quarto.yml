@@ -16,9 +16,6 @@ website:
         text: Resources
       - href: q-and-a.qmd
         text: FAQs
-      - href: sessions.qmd
-        text: Sessions
-
     right:
       - icon: globe
         href: https://omicscenter.github.io/
