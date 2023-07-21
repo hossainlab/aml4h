@@ -30,7 +30,7 @@ website:
         href: https://www.linkedin.com/company/chiral-bangladesh/
     page-navigation: true
   page-footer:
-    left: "&copy; Copyright 2022, Md. Jubayer Hossain"
+    left: "&copy; Copyright 2023, Md. Jubayer Hossain"
     right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
 format:
   html:
