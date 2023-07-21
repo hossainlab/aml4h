@@ -12,8 +12,6 @@ website:
         text: About
       - href: prework.qmd
         text: Prework
-      - href: setup-guide.qmd
-        text: Setup Guide
       - href: resources.qmd
         text: Resources
       - href: q-and-a.qmd
