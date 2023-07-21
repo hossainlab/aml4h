@@ -1,0 +1,49 @@
+---
+pagetitle: "Applied Machine Learning for Healthcare (AML4H)"
+title: "Applied Machine Learning for Healthcare (AML4H)"
+subtitle: "Transforming Healthcare through Machine Learning" 
+editor: source
+---
+
+------------------------------------------------------------------------
+🧑 Instructor: [Md. Jubayer Hossain](https://hossainlab.github.io/)
+
+🗓 November 1 - November 16, 2023 \| 9:00 pm - 11:00pm (Bangladesh Time)
+
+🏨 Medium - Zoom/Google Meet
+
+<!-- 💥 **Register** with [Google Forms](https://forms.gle/hSH1ACSqDYYVsxie6) -->
+**Registration**: *Will start very soon* 
+
+<!-- 💥 **Registration Fee**: 1020 BDT (for students),1530BDT (for professionals) -->
+
+📝 To join private Telegram group for the course, follow instructions in the email you received after registration.
+------------------------------------------------------------------------
+
+# Overview
+Applied Machine Learning for Healthcare (AML4H) is a dynamic and practical course that explores the powerful synergy between cutting-edge machine learning techniques and healthcare applications. In this course, you will gain the skills to analyze healthcare data, build predictive models, and leverage AI to enhance patient care and medical decision-making. Join us on this transformative journey to revolutionize the future of healthcare through data-driven decision and innovation.
+
+## Topics Covered
+- Understanding healthcare data: Electronic Health Records (EHR), medical imaging, genomics, and more.
+- Data preprocessing and cleaning for accurate analysis.
+- Feature selection and engineering for relevant model inputs.
+- Supervised and unsupervised learning algorithms.
+- Deep learning for medical image analysis.
+- Predictive modeling for disease diagnosis and prognosis.
+- Patient risk stratification and personalized treatment plans.
+- Interpretability and explainability of ML models in healthcare.
+- Ethical considerations in applying AI, Machine Learning and Deep Learning to healthcare
+
+## Course Highlights
+
+- Hands-on projects using real healthcare datasets.
+- Guidance from experienced healthcare and machine learning experts.
+- State-of-the-art tools and frameworks.
+- Group discussions and case studies.
+- Collaborative environment fostering teamwork.
+- Guest lectures from healthcare professionals and industry leaders.
+
+## Who should attend?
+Medical professionals, data scientists, AI enthusiasts, and anyone passionate about transforming healthcare through technology. Basic knowledge of machine learning and healthcare concepts is recommended.
+
+Embark on this transformative journey where you'll gain the skills and insights to harness the potential of machine learning in revolutionizing the world of healthcare. Enroll now and become a trailblazer in the future of medical technology! 🩺💡

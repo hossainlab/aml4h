@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Md. Jubayer Hossain  Founder &amp; Management Lead  CHIRAL Bangladesh">
+
+<title>R for Research</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../prework.html" rel="" target="">
+ <span class="menu-text">Prework</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../setup-guide.html" rel="" target="">
+ <span class="menu-text">Setup Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../resources.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../q-and-a.html" rel="" target="">
+ <span class="menu-text">FAQs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-slides" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Slides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-slides">    
+        <li>
+    <a class="dropdown-item" href="../../../materials/slides/Day01/index.qmd" rel="" target="">
+ <span class="dropdown-text">Week 1: Overview</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://omicscenter.github.io/" rel="" target=""><i class="bi bi-globe" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/omicscenter" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/omicscenter" rel="" target=""><i class="bi bi-facebook" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/company/chiral-bangladesh/" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link active" data-scroll-target="#agenda">Agenda</a></li>
+  <li><a href="#what-is-data-structure" id="toc-what-is-data-structure" class="nav-link" data-scroll-target="#what-is-data-structure">What is Data Structure?</a></li>
+  <li><a href="#data-structures-in-r" id="toc-data-structures-in-r" class="nav-link" data-scroll-target="#data-structures-in-r">Data Structures in R</a></li>
+  <li><a href="#types-of-data-structures-in-r" id="toc-types-of-data-structures-in-r" class="nav-link" data-scroll-target="#types-of-data-structures-in-r">Types of Data Structures in R</a></li>
+  <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings">Strings</a></li>
+  <li><a href="#string-operations-in-r" id="toc-string-operations-in-r" class="nav-link" data-scroll-target="#string-operations-in-r">String Operations in R</a></li>
+  <li><a href="#find-length-of-string" id="toc-find-length-of-string" class="nav-link" data-scroll-target="#find-length-of-string">Find Length of String</a></li>
+  <li><a href="#join-strings-together" id="toc-join-strings-together" class="nav-link" data-scroll-target="#join-strings-together">Join Strings Together</a></li>
+  <li><a href="#compare-two-strings-in-r-programming" id="toc-compare-two-strings-in-r-programming" class="nav-link" data-scroll-target="#compare-two-strings-in-r-programming">Compare Two Strings in R Programming</a></li>
+  <li><a href="#change-case-of-r-string" id="toc-change-case-of-r-string" class="nav-link" data-scroll-target="#change-case-of-r-string">Change Case of R String</a></li>
+  <li><a href="#vector" id="toc-vector" class="nav-link" data-scroll-target="#vector">Vector</a></li>
+  <li><a href="#creating-vectors---using-the-c-function" id="toc-creating-vectors---using-the-c-function" class="nav-link" data-scroll-target="#creating-vectors---using-the-c-function">Creating Vectors - Using the c() Function</a></li>
+  <li><a href="#creating-vectors---using-the-operator" id="toc-creating-vectors---using-the-operator" class="nav-link" data-scroll-target="#creating-vectors---using-the-operator">Creating Vectors - Using the <code>:</code> Operator</a></li>
+  <li><a href="#creating-vectors---using-sequence-generation-functions" id="toc-creating-vectors---using-sequence-generation-functions" class="nav-link" data-scroll-target="#creating-vectors---using-sequence-generation-functions">Creating Vectors - Using Sequence Generation Functions</a></li>
+  <li><a href="#creating-vectors---using-vectorized-operations" id="toc-creating-vectors---using-vectorized-operations" class="nav-link" data-scroll-target="#creating-vectors---using-vectorized-operations">Creating Vectors - Using Vectorized Operations</a></li>
+  <li><a href="#creating-vectors---mixing-objects" id="toc-creating-vectors---mixing-objects" class="nav-link" data-scroll-target="#creating-vectors---mixing-objects">Creating Vectors - Mixing Objects</a></li>
+  <li><a href="#matrix" id="toc-matrix" class="nav-link" data-scroll-target="#matrix">Matrix</a></li>
+  <li><a href="#creatinig-matrix" id="toc-creatinig-matrix" class="nav-link" data-scroll-target="#creatinig-matrix">Creatinig Matrix</a></li>
+  <li><a href="#creatinig-matrix-1" id="toc-creatinig-matrix-1" class="nav-link" data-scroll-target="#creatinig-matrix-1">Creatinig Matrix</a></li>
+  <li><a href="#matrix-properties" id="toc-matrix-properties" class="nav-link" data-scroll-target="#matrix-properties">Matrix Properties</a></li>
+  <li><a href="#list" id="toc-list" class="nav-link" data-scroll-target="#list">List</a></li>
+  <li><a href="#creating-list" id="toc-creating-list" class="nav-link" data-scroll-target="#creating-list">Creating List</a></li>
+  <li><a href="#creating-list-1" id="toc-creating-list-1" class="nav-link" data-scroll-target="#creating-list-1">Creating List</a></li>
+  <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors">Factors</a></li>
+  <li><a href="#creating-factors" id="toc-creating-factors" class="nav-link" data-scroll-target="#creating-factors">Creating Factors</a></li>
+  <li><a href="#creating-factors-1" id="toc-creating-factors-1" class="nav-link" data-scroll-target="#creating-factors-1">Creating Factors</a></li>
+  <li><a href="#data-frame" id="toc-data-frame" class="nav-link" data-scroll-target="#data-frame">Data Frame</a></li>
+  <li><a href="#create-data-frame" id="toc-create-data-frame" class="nav-link" data-scroll-target="#create-data-frame">Create Data Frame</a></li>
+  <li><a href="#data-conversion-functions-in-r" id="toc-data-conversion-functions-in-r" class="nav-link" data-scroll-target="#data-conversion-functions-in-r">Data Conversion Functions in R</a></li>
+  <li><a href="#as.character" id="toc-as.character" class="nav-link" data-scroll-target="#as.character"><code>as.character()</code></a></li>
+  <li><a href="#as.numeric" id="toc-as.numeric" class="nav-link" data-scroll-target="#as.numeric"><code>as.numeric()</code></a></li>
+  <li><a href="#as.integer" id="toc-as.integer" class="nav-link" data-scroll-target="#as.integer"><code>as.integer()</code></a></li>
+  <li><a href="#as.logical" id="toc-as.logical" class="nav-link" data-scroll-target="#as.logical"><code>as.logical()</code></a></li>
+  <li><a href="#as.factor" id="toc-as.factor" class="nav-link" data-scroll-target="#as.factor"><code>as.factor()</code></a></li>
+  <li><a href="#subsetting-r-objects" id="toc-subsetting-r-objects" class="nav-link" data-scroll-target="#subsetting-r-objects">Subsetting R Objects</a>
+  <ul class="collapse">
+  <li><a href="#subsetting-a-vector" id="toc-subsetting-a-vector" class="nav-link" data-scroll-target="#subsetting-a-vector">Subsetting a Vector</a></li>
+  <li><a href="#subsetting-vector-elements-by-index" id="toc-subsetting-vector-elements-by-index" class="nav-link" data-scroll-target="#subsetting-vector-elements-by-index">Subsetting Vector Elements by Index</a></li>
+  <li><a href="#subsetting-vector-elements-by-logical-condition" id="toc-subsetting-vector-elements-by-logical-condition" class="nav-link" data-scroll-target="#subsetting-vector-elements-by-logical-condition">Subsetting Vector Elements by Logical Condition</a></li>
+  <li><a href="#subsetting-vector-elements-using-operator" id="toc-subsetting-vector-elements-using-operator" class="nav-link" data-scroll-target="#subsetting-vector-elements-using-operator">Subsetting Vector Elements Using <code>:</code> Operator</a></li>
+  <li><a href="#subsetting-vector-elements-using-c-function" id="toc-subsetting-vector-elements-using-c-function" class="nav-link" data-scroll-target="#subsetting-vector-elements-using-c-function">Subsetting Vector Elements Using <code>c()</code> Function</a></li>
+  <li><a href="#subsetting-list" id="toc-subsetting-list" class="nav-link" data-scroll-target="#subsetting-list">Subsetting List</a></li>
+  <li><a href="#subsetting-list-elements-by-index" id="toc-subsetting-list-elements-by-index" class="nav-link" data-scroll-target="#subsetting-list-elements-by-index">Subsetting List Elements by Index</a></li>
+  <li><a href="#subsetting-list-elements-by-name" id="toc-subsetting-list-elements-by-name" class="nav-link" data-scroll-target="#subsetting-list-elements-by-name">Subsetting List Elements by Name</a></li>
+  <li><a href="#subsetting-a-subset-of-list-elements" id="toc-subsetting-a-subset-of-list-elements" class="nav-link" data-scroll-target="#subsetting-a-subset-of-list-elements">Subsetting a Subset of List Elements</a></li>
+  <li><a href="#subsetting-matrix" id="toc-subsetting-matrix" class="nav-link" data-scroll-target="#subsetting-matrix">Subsetting Matrix</a></li>
+  <li><a href="#subsetting-rows" id="toc-subsetting-rows" class="nav-link" data-scroll-target="#subsetting-rows">Subsetting Rows</a></li>
+  <li><a href="#subsetting-columns" id="toc-subsetting-columns" class="nav-link" data-scroll-target="#subsetting-columns">Subsetting Columns</a></li>
+  <li><a href="#subsetting-elements" id="toc-subsetting-elements" class="nav-link" data-scroll-target="#subsetting-elements">Subsetting Elements</a></li>
+  </ul></li>
+  <li><a href="#control-flow-in-r" id="toc-control-flow-in-r" class="nav-link" data-scroll-target="#control-flow-in-r">Control Flow in R</a>
+  <ul class="collapse">
+  <li><a href="#control-flow-structure" id="toc-control-flow-structure" class="nav-link" data-scroll-target="#control-flow-structure">Control Flow Structure</a></li>
+  <li><a href="#if-statement" id="toc-if-statement" class="nav-link" data-scroll-target="#if-statement"><code>if</code> statement</a></li>
+  <li><a href="#if-statement-1" id="toc-if-statement-1" class="nav-link" data-scroll-target="#if-statement-1"><code>if</code> statement</a></li>
+  <li><a href="#if..else-statement" id="toc-if..else-statement" class="nav-link" data-scroll-target="#if..else-statement"><code>if..else</code> statement</a></li>
+  <li><a href="#if..else-statement-1" id="toc-if..else-statement-1" class="nav-link" data-scroll-target="#if..else-statement-1"><code>if..else</code> statement</a></li>
+  <li><a href="#if..else-if..else-statement" id="toc-if..else-if..else-statement" class="nav-link" data-scroll-target="#if..else-if..else-statement"><code>if..else if..else</code> statement</a></li>
+  <li><a href="#if..else-if..else-statement-1" id="toc-if..else-if..else-statement-1" class="nav-link" data-scroll-target="#if..else-if..else-statement-1"><code>if..else if..else</code> statement</a></li>
+  <li><a href="#ifelse-function" id="toc-ifelse-function" class="nav-link" data-scroll-target="#ifelse-function"><code>ifelse</code> function</a></li>
+  <li><a href="#ifelse-function-1" id="toc-ifelse-function-1" class="nav-link" data-scroll-target="#ifelse-function-1"><code>ifelse</code> function</a></li>
+  <li><a href="#handling-missing-values-with-ifelse" id="toc-handling-missing-values-with-ifelse" class="nav-link" data-scroll-target="#handling-missing-values-with-ifelse">Handling Missing Values with <code>ifelse()</code></a></li>
+  <li><a href="#ifelse-with-data-frames" id="toc-ifelse-with-data-frames" class="nav-link" data-scroll-target="#ifelse-with-data-frames"><code>ifelse()</code> with Data Frames</a></li>
+  <li><a href="#for-loop" id="toc-for-loop" class="nav-link" data-scroll-target="#for-loop"><code>for</code> loop</a></li>
+  <li><a href="#for-loop-example" id="toc-for-loop-example" class="nav-link" data-scroll-target="#for-loop-example"><code>for</code> loop Example</a></li>
+  <li><a href="#using-for-loop-with-vector" id="toc-using-for-loop-with-vector" class="nav-link" data-scroll-target="#using-for-loop-with-vector">Using <code>for</code> Loop with Vector</a></li>
+  <li><a href="#controlling-for-loop-with-conditions" id="toc-controlling-for-loop-with-conditions" class="nav-link" data-scroll-target="#controlling-for-loop-with-conditions">Controlling <code>for</code> Loop with Conditions</a></li>
+  <li><a href="#controlling-for-loop-with-conditions-1" id="toc-controlling-for-loop-with-conditions-1" class="nav-link" data-scroll-target="#controlling-for-loop-with-conditions-1">Controlling <code>for</code> Loop with Conditions</a></li>
+  <li><a href="#while-loop" id="toc-while-loop" class="nav-link" data-scroll-target="#while-loop"><code>while</code> loop</a></li>
+  <li><a href="#while-loop-example" id="toc-while-loop-example" class="nav-link" data-scroll-target="#while-loop-example"><code>while</code> Loop Example</a></li>
+  <li><a href="#using-while-loop-with-conditional-statements" id="toc-using-while-loop-with-conditional-statements" class="nav-link" data-scroll-target="#using-while-loop-with-conditional-statements">Using <code>while</code> Loop with Conditional Statements</a></li>
+  <li><a href="#using-while-loop-with-conditional-statements-1" id="toc-using-while-loop-with-conditional-statements-1" class="nav-link" data-scroll-target="#using-while-loop-with-conditional-statements-1">Using <code>while</code> Loop with Conditional Statements</a></li>
+  <li><a href="#controlling-while-loop-with-external-conditions" id="toc-controlling-while-loop-with-external-conditions" class="nav-link" data-scroll-target="#controlling-while-loop-with-external-conditions">Controlling <code>while</code> Loop with External Conditions</a></li>
+  <li><a href="#controlling-while-loop-with-external-conditions-1" id="toc-controlling-while-loop-with-external-conditions-1" class="nav-link" data-scroll-target="#controlling-while-loop-with-external-conditions-1">Controlling <code>while</code> Loop with External Conditions</a></li>
+  <li><a href="#break-statement" id="toc-break-statement" class="nav-link" data-scroll-target="#break-statement"><code>break</code> statement</a></li>
+  <li><a href="#break-statement-example" id="toc-break-statement-example" class="nav-link" data-scroll-target="#break-statement-example"><code>break</code> Statement Example</a></li>
+  <li><a href="#break-statement-example-1" id="toc-break-statement-example-1" class="nav-link" data-scroll-target="#break-statement-example-1"><code>break</code> Statement Example</a></li>
+  <li><a href="#next-statement" id="toc-next-statement" class="nav-link" data-scroll-target="#next-statement"><code>next</code> statement</a></li>
+  <li><a href="#next-statement-example" id="toc-next-statement-example" class="nav-link" data-scroll-target="#next-statement-example"><code>next</code> Statement Example</a></li>
+  <li><a href="#repeat-loop" id="toc-repeat-loop" class="nav-link" data-scroll-target="#repeat-loop"><code>repeat</code> loop</a></li>
+  <li><a href="#repeat-loop-example" id="toc-repeat-loop-example" class="nav-link" data-scroll-target="#repeat-loop-example"><code>repeat</code> loop Example</a></li>
+  <li><a href="#repeat-loop-example-1" id="toc-repeat-loop-example-1" class="nav-link" data-scroll-target="#repeat-loop-example-1"><code>repeat</code> loop Example</a></li>
+  </ul></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <ul class="collapse">
+  <li><a href="#functions-in-r" id="toc-functions-in-r" class="nav-link" data-scroll-target="#functions-in-r">Functions in R</a></li>
+  <li><a href="#types-of-functions-in-r" id="toc-types-of-functions-in-r" class="nav-link" data-scroll-target="#types-of-functions-in-r">Types of Functions in R</a></li>
+  <li><a href="#built-in-functions" id="toc-built-in-functions" class="nav-link" data-scroll-target="#built-in-functions">Built-in Functions</a></li>
+  <li><a href="#user-defined-functions" id="toc-user-defined-functions" class="nav-link" data-scroll-target="#user-defined-functions">User-Defined Functions</a></li>
+  <li><a href="#recursive-functions" id="toc-recursive-functions" class="nav-link" data-scroll-target="#recursive-functions">Recursive Functions</a></li>
+  <li><a href="#anonymous-functions-lambda-functions" id="toc-anonymous-functions-lambda-functions" class="nav-link" data-scroll-target="#anonymous-functions-lambda-functions">Anonymous Functions (Lambda Functions)</a></li>
+  <li><a href="#higher-order-functions" id="toc-higher-order-functions" class="nav-link" data-scroll-target="#higher-order-functions">Higher-Order Functions</a></li>
+  <li><a href="#creating-a-function" id="toc-creating-a-function" class="nav-link" data-scroll-target="#creating-a-function">Creating a Function</a></li>
+  <li><a href="#creating-a-function-1" id="toc-creating-a-function-1" class="nav-link" data-scroll-target="#creating-a-function-1">Creating a Function</a></li>
+  <li><a href="#calling-a-function" id="toc-calling-a-function" class="nav-link" data-scroll-target="#calling-a-function">Calling a Function</a></li>
+  <li><a href="#function-with-default-arguments" id="toc-function-with-default-arguments" class="nav-link" data-scroll-target="#function-with-default-arguments">Function with Default Arguments</a></li>
+  <li><a href="#function-with-variable-arguments" id="toc-function-with-variable-arguments" class="nav-link" data-scroll-target="#function-with-variable-arguments">Function with Variable Arguments</a></li>
+  </ul></li>
+  <li><a href="#dates-and-times" id="toc-dates-and-times" class="nav-link" data-scroll-target="#dates-and-times">Dates and Times</a>
+  <ul class="collapse">
+  <li><a href="#working-with-dates-and-times-in-r" id="toc-working-with-dates-and-times-in-r" class="nav-link" data-scroll-target="#working-with-dates-and-times-in-r">Working with Dates and Times in R</a></li>
+  <li><a href="#date-and-time-classes" id="toc-date-and-time-classes" class="nav-link" data-scroll-target="#date-and-time-classes">Date and Time Classes</a></li>
+  <li><a href="#creating-dates-and-times" id="toc-creating-dates-and-times" class="nav-link" data-scroll-target="#creating-dates-and-times">Creating Dates and Times</a></li>
+  <li><a href="#formatting-and-parsing-dates-and-times" id="toc-formatting-and-parsing-dates-and-times" class="nav-link" data-scroll-target="#formatting-and-parsing-dates-and-times">Formatting and Parsing Dates and Times</a></li>
+  <li><a href="#extracting-components" id="toc-extracting-components" class="nav-link" data-scroll-target="#extracting-components">Extracting Components</a></li>
+  <li><a href="#arithmetic-operations" id="toc-arithmetic-operations" class="nav-link" data-scroll-target="#arithmetic-operations">Arithmetic Operations</a></li>
+  <li><a href="#time-zones" id="toc-time-zones" class="nav-link" data-scroll-target="#time-zones">Time Zones</a></li>
+  </ul></li>
+  <li><a href="#loop-functions" id="toc-loop-functions" class="nav-link" data-scroll-target="#loop-functions">Loop Functions</a>
+  <ul class="collapse">
+  <li><a href="#loop-functions---apply-family" id="toc-loop-functions---apply-family" class="nav-link" data-scroll-target="#loop-functions---apply-family">Loop Functions - Apply Family</a></li>
+  <li><a href="#apply" id="toc-apply" class="nav-link" data-scroll-target="#apply"><code>apply()</code></a></li>
+  <li><a href="#lapply" id="toc-lapply" class="nav-link" data-scroll-target="#lapply"><code>lapply()</code></a></li>
+  <li><a href="#sapply" id="toc-sapply" class="nav-link" data-scroll-target="#sapply"><code>sapply()</code></a></li>
+  <li><a href="#vapply" id="toc-vapply" class="nav-link" data-scroll-target="#vapply"><code>vapply()</code></a></li>
+  <li><a href="#mapply" id="toc-mapply" class="nav-link" data-scroll-target="#mapply"><code>mapply()</code></a></li>
+  </ul></li>
+  <li><a href="#simulations---generating-random-numbers" id="toc-simulations---generating-random-numbers" class="nav-link" data-scroll-target="#simulations---generating-random-numbers">Simulations - Generating Random Numbers</a>
+  <ul class="collapse">
+  <li><a href="#simulations" id="toc-simulations" class="nav-link" data-scroll-target="#simulations">Simulations</a></li>
+  <li><a href="#generating-random-numbers" id="toc-generating-random-numbers" class="nav-link" data-scroll-target="#generating-random-numbers">Generating Random Numbers</a></li>
+  <li><a href="#generating-random-integers" id="toc-generating-random-integers" class="nav-link" data-scroll-target="#generating-random-integers">Generating Random Integers</a></li>
+  <li><a href="#generating-random-samples-from-a-vector" id="toc-generating-random-samples-from-a-vector" class="nav-link" data-scroll-target="#generating-random-samples-from-a-vector">Generating Random Samples from a Vector</a></li>
+  <li><a href="#generating-random-numbers-from-distributions" id="toc-generating-random-numbers-from-distributions" class="nav-link" data-scroll-target="#generating-random-numbers-from-distributions">Generating Random Numbers from Distributions</a></li>
+  <li><a href="#seeding-random-number-generation" id="toc-seeding-random-number-generation" class="nav-link" data-scroll-target="#seeding-random-number-generation">Seeding Random Number Generation</a></li>
+  </ul></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions?</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R for Research</h1>
+<p class="subtitle lead">Fundamentals of R: Part 2</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Md. Jubayer Hossain <br>Founder &amp; Management Lead <br>CHIRAL Bangladesh </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="agenda" class="level2">
+<h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
+<ul>
+<li>Data Structurs in R</li>
+<li>Subsetting R Objects</li>
+<li>Control Flow in R</li>
+<li>Functions</li>
+<li>Dates and Times</li>
+<li>Loop Functions</li>
+<li>Simulations - Generating Random Numbers</li>
+</ul>
+</section>
+<section id="what-is-data-structure" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-data-structure">What is Data Structure?</h2>
+<ul>
+<li>Data structures are ways of organizing and storing data in a computer system.</li>
+<li>They define the format, organization, and relationship between data elements.</li>
+<li>Data structures facilitate efficient operations such as insertion, deletion, searching, and sorting of data.</li>
+<li>They provide a foundation for building algorithms and designing efficient programs.</li>
+</ul>
+</section>
+<section id="data-structures-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="data-structures-in-r">Data Structures in R</h2>
+<ul>
+<li>Vectors</li>
+<li>Matrix</li>
+<li>Lists</li>
+<li>Data Frame</li>
+<li>Factor</li>
+</ul>
+</section>
+<section id="types-of-data-structures-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-data-structures-in-r">Types of Data Structures in R</h2>
+<ul>
+<li>One-Dimensional Data Structures
+<ul>
+<li>One-dimensional data structures in R are used to store and manipulate data along a single dimension.</li>
+<li>The main one-dimensional data structure in R is the <code>vector.</code></li>
+</ul></li>
+<li>Two-Dimensional Data Structures
+<ul>
+<li>Two-dimensional data structures in R are used to store and manipulate data in a tabular format with rows and columns.</li>
+<li>The main two-dimensional data structures in R are <code>matrices</code> and <code>data frames</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="strings" class="level2">
+<h2 class="anchored" data-anchor-id="strings">Strings</h2>
+<ul>
+<li><p>A string is a sequence of characters. For example, <code>"Programming"</code> is a string that includes characters: P, r, o, g, r, a, m, m, i, n, g.</p></li>
+<li><p>In R, we represent strings using quotation marks (double quotes, ” ” or single quotes, ’ ’). For example,</p></li>
+</ul>
+<div class="cell" data-hash="index_cache/html/str-1_e5806f5591c45ea7df604c6d033317e9">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># string value using single quotes</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="st">'Hello'</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “Hello”</p>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># string value using double quotes </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Hello"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “Hello”</p>
+</div>
+</section>
+<section id="string-operations-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="string-operations-in-r">String Operations in R</h2>
+<p>R provides us various built-in functions that allow us to perform different operations on strings. Here, we will look at some of the commonly used string functions.</p>
+<ul>
+<li>Find the length of a string</li>
+<li>Join two strings</li>
+<li>Compare two strings</li>
+<li>Change the string case</li>
+</ul>
+</section>
+<section id="find-length-of-string" class="level2">
+<h2 class="anchored" data-anchor-id="find-length-of-string">Find Length of String</h2>
+<p>We use the <code>nchar()</code> method to find the length of a string. For example,</p>
+<div class="cell" data-hash="index_cache/html/str-2_7afcc044d3cff0596ba19e78a1ff06ef">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>message1 <span class="ot">&lt;-</span> <span class="st">"CHIRAL Bangladesh"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use of nchar() to find length of message1 </span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(message1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 17</p>
+</div>
+<p>Here, <code>nchar()</code> returns the number of characters present inside the string.</p>
+</section>
+<section id="join-strings-together" class="level2">
+<h2 class="anchored" data-anchor-id="join-strings-together">Join Strings Together</h2>
+<p>In R, we can use the <code>paste()</code> function to join two or more strings together. For example,</p>
+<div class="cell" data-hash="index_cache/html/str-3_1187e9fec6e4c0de92a414bde049470d">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>message1 <span class="ot">&lt;-</span> <span class="st">"CHIRAL"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>message2 <span class="ot">&lt;-</span> <span class="st">"Bangladesh"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use paste() to join two strings</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(message1, message2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “CHIRAL Bangladesh”</p>
+</div>
+<p>Here, we have used the <code>paste()</code> function to join two strings: <code>message1</code> and <code>message2</code>.</p>
+</section>
+<section id="compare-two-strings-in-r-programming" class="level2">
+<h2 class="anchored" data-anchor-id="compare-two-strings-in-r-programming">Compare Two Strings in R Programming</h2>
+<p>We use the <code>==</code> operator to compare two strings. If two strings are equal, the operator returns <code>TRUE.</code> Otherwise, it returns <code>FALSE.</code> For example,</p>
+<div class="cell" data-hash="index_cache/html/str-4_e0b240de7c9cff2793f0124cbe592024">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>message1 <span class="ot">&lt;-</span> <span class="st">"Hello, World!"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>message2 <span class="ot">&lt;-</span> <span class="st">"Hi, Bangladesh!"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>message3 <span class="ot">&lt;-</span> <span class="st">"Hello, CHIRAL!"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># `message1 == message2` - returns FALSE because two strings are not equal</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(message1 <span class="sc">==</span> message2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] FALSE</p>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#`message1 == message3` - returns TRUE because both strings are equal </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(message1 <span class="sc">==</span> message3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] FALSE</p>
+</div>
+</section>
+<section id="change-case-of-r-string" class="level2">
+<h2 class="anchored" data-anchor-id="change-case-of-r-string">Change Case of R String</h2>
+<p>In R, we can change the case of a string using</p>
+<ul>
+<li><code>toupper()</code> - convert string to uppercase</li>
+<li><code>tolower()</code> - convert string to lowercase</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/str-5_22ca6ed710ff87cd587118d2a5f8d534">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>message <span class="ot">&lt;-</span> <span class="st">"R Programming"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># change string to uppercase</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>message_upper <span class="ot">&lt;-</span> <span class="fu">toupper</span>(message)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>message_upper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “R PROGRAMMING”</p>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change string to lowercase</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>message_lower <span class="ot">&lt;-</span> <span class="fu">tolower</span>(message)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>message_lower</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “r programming”</p>
+</div>
+</section>
+<section id="vector" class="level2">
+<h2 class="anchored" data-anchor-id="vector">Vector</h2>
+<ul>
+<li>Vector is a basic data structure in R.</li>
+<li>It contains element of the same type.</li>
+<li>The data types can be logical, integer, double, character, and complex.</li>
+<li>A vector’s type can be checked with the <code>typeof()</code> function.</li>
+</ul>
+</section>
+<section id="creating-vectors---using-the-c-function" class="level2">
+<h2 class="anchored" data-anchor-id="creating-vectors---using-the-c-function">Creating Vectors - Using the c() Function</h2>
+<p>The <code>c()</code> function is used to concatenate or combine elements into a vector.</p>
+<div class="cell" data-hash="index_cache/html/vector-1_89f0a822063950b2aaaf17629fa725f3">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric vector</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>numeric_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Character vector</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>character_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"orange"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical vector</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>logical_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creating-vectors---using-the-operator" class="level2">
+<h2 class="anchored" data-anchor-id="creating-vectors---using-the-operator">Creating Vectors - Using the <code>:</code> Operator</h2>
+<p>The <code>:</code> operator generates a sequence of numbers from the starting value to the ending value.</p>
+<div class="cell" data-hash="index_cache/html/vector-2_3bbb0f50f5a9e2059bf1ad3bf821bbc1">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric sequence vector</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>numeric_sequence <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creating-vectors---using-sequence-generation-functions" class="level2">
+<h2 class="anchored" data-anchor-id="creating-vectors---using-sequence-generation-functions">Creating Vectors - Using Sequence Generation Functions</h2>
+<p>R provides functions like <code>seq()</code>, <code>rep()</code>, and <code>seq_len()</code> to generate sequences of numbers.</p>
+<div class="cell" data-hash="index_cache/html/vector-3_fc24ba1085b485faf70a8a97a4cefa00">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric sequence vector using seq()</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>numeric_sequence <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeated values vector using rep()</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>repeated_values <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="at">times =</span> <span class="dv">5</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Index sequence vector using seq_len()</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>index_sequence <span class="ot">&lt;-</span> <span class="fu">seq_len</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creating-vectors---using-vectorized-operations" class="level2">
+<h2 class="anchored" data-anchor-id="creating-vectors---using-vectorized-operations">Creating Vectors - Using Vectorized Operations</h2>
+<p>Vectors can be created by performing operations on existing vectors or values.</p>
+<div class="cell" data-hash="index_cache/html/vector-4_e05984e8e38f8afe20cc214eddff5b12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector created using vectorized operation</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>new_vector <span class="ot">&lt;-</span> numeric_vector <span class="sc">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creating-vectors---mixing-objects" class="level2">
+<h2 class="anchored" data-anchor-id="creating-vectors---mixing-objects">Creating Vectors - Mixing Objects</h2>
+<div class="cell" data-hash="index_cache/html/vector-5_618739aecbcbd0e7ddc02233a257ee81">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Character </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.7</span>, <span class="st">"a"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric </span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="dv">2</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Character </span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="matrix" class="level2">
+<h2 class="anchored" data-anchor-id="matrix">Matrix</h2>
+<ul>
+<li>Matrix is a two dimensional data structure in R programming.</li>
+<li>Matrix is similar to vector but additionally contains the dimension attributes.</li>
+<li>All attributes of an object can be checked by <code>attributes()</code> function.</li>
+<li>Dimension can be checked by directly with the <code>dim()</code>function. We can check if a variable is a matrix or not with the <code>class()</code> function.</li>
+</ul>
+</section>
+<section id="creatinig-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="creatinig-matrix">Creatinig Matrix</h2>
+<ul>
+<li>Matrix can be created using the <code>matrix()</code> function. Here’s the general syntax:</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/mat-1_ac8037a9c54892f8b4659713d88a4423">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(data, nrow, ncol, byrow, dimnames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>data:</code> The data elements used to fill the matrix. It can be a vector or a combination of vectors.</li>
+<li><code>nrow:</code> The number of rows in the matrix.</li>
+<li><code>ncol:</code> The number of columns in the matrix.</li>
+<li><code>byrow:</code> A logical value specifying whether the matrix should be filled by row (TRUE) or by column (FALSE) (default).</li>
+<li><code>dimnames:</code> Optional names for the rows and columns of the matrix.</li>
+</ul>
+</section>
+<section id="creatinig-matrix-1" class="level2">
+<h2 class="anchored" data-anchor-id="creatinig-matrix-1">Creatinig Matrix</h2>
+<div class="cell" data-hash="index_cache/html/mat-2_e37f7d0da59ad6408bb6110b7a178336">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix using matrix function </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>mat1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>) </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix using matrix function: only one dimension  </span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>mat2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix using matrix function: filling by row-wise </span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>mat3 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix using matrix function: dimension names </span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>mat4 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"X"</span>, <span class="st">"Y"</span>, <span class="st">"Z"</span>), </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>                                             <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="matrix-properties" class="level2">
+<h2 class="anchored" data-anchor-id="matrix-properties">Matrix Properties</h2>
+<div class="cell" data-hash="index_cache/html/mat-3_6e4fd99f7a849bd34e2832ff15c8856f">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix using matrix function </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"X"</span>, <span class="st">"Y"</span>, <span class="st">"Z"</span>), </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                                             <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>)))</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Column Names </span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mat) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “A” “B” “C”</p>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Row Names </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(mat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “X” “Y” “Z”</p>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dimension </span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(mat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 3 3</p>
+</div>
+</section>
+<section id="list" class="level2">
+<h2 class="anchored" data-anchor-id="list">List</h2>
+<ul>
+<li>List is a data structure having components of mixed data types.</li>
+<li>A vector having all elements of the same type is called atomic vector but a vector having elements of different type is called list.</li>
+<li>We can check if it’s a list with <code>typeof()</code> function and find its length using <code>length()</code> function.</li>
+</ul>
+</section>
+<section id="creating-list" class="level2">
+<h2 class="anchored" data-anchor-id="creating-list">Creating List</h2>
+<p>List can be created using the list() function. Here’s the general syntax:</p>
+<div class="cell" data-hash="index_cache/html/list-1_dd1be1601627ea32564a9d4dd7b6f504">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(..., <span class="at">recursive =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>...</code>: The elements to be included in the list, separated by commas.</li>
+<li><code>recursive</code>: A logical value specifying whether the list should allow nested lists (TRUE) or not (FALSE) (default).</li>
+</ul>
+</section>
+<section id="creating-list-1" class="level2">
+<h2 class="anchored" data-anchor-id="creating-list-1">Creating List</h2>
+<div class="cell" data-hash="index_cache/html/list-2_b2fbb82d2671ad88277ba34e7968a04f">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>L <span class="ot">=</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="st">"a"</span>, <span class="cn">TRUE</span>, <span class="dv">1</span><span class="sc">+</span>3i)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list with different elements</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"John Doe"</span>,  <span class="co"># Character value</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="dv">30</span>,  <span class="co"># Numeric value</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">is_student =</span> <span class="cn">TRUE</span>,  <span class="co"># Logical value</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">scores =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">85</span>, <span class="dv">92</span>),  <span class="co"># Numeric vector</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">matrix_data =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>),  <span class="co"># Matrix</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">sub_list =</span> <span class="fu">list</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)  <span class="co"># Nested list</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="factors" class="level2">
+<h2 class="anchored" data-anchor-id="factors">Factors</h2>
+<ul>
+<li>In R, factors are used to represent categorical or discrete data with predefined levels or categories.</li>
+<li>Factors are useful when working with data that has distinct categories or when performing statistical analysis.</li>
+<li>Factors are used to represent categorical data and can be ordered and unordered.</li>
+</ul>
+</section>
+<section id="creating-factors" class="level2">
+<h2 class="anchored" data-anchor-id="creating-factors">Creating Factors</h2>
+<p>Factors are created using the factor() function in R. Here’s the general syntax:</p>
+<div class="cell" data-hash="index_cache/html/factor-1_ab3049073672dfcb01a223cb68e476c7">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(x, levels, labels, <span class="at">ordered =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>x</code>: A vector or column of data that represents the categorical variable.</li>
+<li><code>levels</code>: An optional argument specifying the unique levels or categories of the factor. If not provided, the distinct values in x are used as levels.</li>
+<li><code>labels</code>: An optional argument specifying the labels for the levels. If not provided, the levels themselves are used as labels.</li>
+<li><code>ordered</code>: A logical value indicating whether the factor should be treated as ordered (TRUE) or unordered (FALSE) (default).</li>
+</ul>
+</section>
+<section id="creating-factors-1" class="level2">
+<h2 class="anchored" data-anchor-id="creating-factors-1">Creating Factors</h2>
+<div class="cell" data-hash="index_cache/html/factor-2_67e3afb8e2fe6f421d58b6ed0efa9ad0">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a factor using factor() function </span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"yes"</span>, <span class="st">"no"</span>, <span class="st">"yes"</span>, <span class="st">"no"</span>))</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check levels </span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “no” “yes”</p>
+</div>
+</section>
+<section id="data-frame" class="level2">
+<h2 class="anchored" data-anchor-id="data-frame">Data Frame</h2>
+<ul>
+<li>In R, a data frame is a two-dimensional tabular data structure similar to a table in a relational database.</li>
+<li>It consists of rows and columns, where each column can have a different data type.</li>
+<li>Data frames are commonly used for storing and manipulating structured data, and they provide a convenient way to work with datasets.</li>
+<li>Data frames can be created using the <code>data.frame()</code> function or by importing data from external sources.</li>
+</ul>
+</section>
+<section id="create-data-frame" class="level2">
+<h2 class="anchored" data-anchor-id="create-data-frame">Create Data Frame</h2>
+<p>Data frames can be created using the data.frame() function or by importing data from external sources. Here’s an example of creating a data frame in R:</p>
+<div class="cell" data-hash="index_cache/html/df_65dd1cfc2fd4fbb4d7013551bae4176c">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"John"</span>, <span class="st">"Alice"</span>, <span class="st">"Bob"</span>),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>),</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">city =</span> <span class="fu">c</span>(<span class="st">"New York"</span>, <span class="st">"London"</span>, <span class="st">"Paris"</span>),</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-conversion-functions-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="data-conversion-functions-in-r">Data Conversion Functions in R</h2>
+<ul>
+<li>Conversion functions in R help transform data between different types and formats.</li>
+<li><code>as.character()</code>, <code>as.numeric()</code>, <code>as.integer()</code>, <code>as.logical()</code>, and <code>as.factor()</code> are commonly used conversion functions.</li>
+<li>These functions are essential for data preprocessing, ensuring data compatibility, and performing operations on different data types.</li>
+</ul>
+</section>
+<section id="as.character" class="level2">
+<h2 class="anchored" data-anchor-id="as.character"><code>as.character()</code></h2>
+<ul>
+<li>as.character() function converts an object to a character string representation.</li>
+<li>Syntax: as.character(x)</li>
+<li>x: The object to be converted.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_1ccc14aac1d4c80dc05b104a4ded07fc">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert numeric values to character strings</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>character_numbers <span class="ot">&lt;-</span> <span class="fu">as.character</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="as.numeric" class="level2">
+<h2 class="anchored" data-anchor-id="as.numeric"><code>as.numeric()</code></h2>
+<ul>
+<li>as.numeric() function converts an object to numeric (floating-point) values.</li>
+<li>Syntax: as.numeric(x)</li>
+<li>x: The object to be converted.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_772fee09bb144e634419cbac442da1df">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert character strings to numeric values</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>character_numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>numeric_numbers <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(character_numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="as.integer" class="level2">
+<h2 class="anchored" data-anchor-id="as.integer"><code>as.integer()</code></h2>
+<ul>
+<li>as.integer() function converts an object to integer values.</li>
+<li>Syntax: as.integer(x)</li>
+<li>x: The object to be converted.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_a756071957e1a21e6e25ef5153b5f651">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert numeric values to integer values</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">2.7</span>, <span class="fl">3.9</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>integer_numbers <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="as.logical" class="level2">
+<h2 class="anchored" data-anchor-id="as.logical"><code>as.logical()</code></h2>
+<ul>
+<li>as.logical() function converts an object to logical (boolean) values.</li>
+<li>Syntax: as.logical(x)</li>
+<li>x: The object to be converted.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_5b9cbe82ee6f09c47dba0671a2aa3c52">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert numeric values to logical values</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>logical_values <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="as.factor" class="level2">
+<h2 class="anchored" data-anchor-id="as.factor"><code>as.factor()</code></h2>
+<ul>
+<li>as.factor() function converts an object to a factor, which represents categorical data.</li>
+<li>Syntax: as.factor(x)</li>
+<li>x: The object to be converted.</li>
+</ul>
+</section>
+<section id="subsetting-r-objects" class="level1">
+<h1>Subsetting R Objects</h1>
+<section id="subsetting-a-vector" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-a-vector">Subsetting a Vector</h2>
+<ul>
+<li>Subsetting a vector allows you to extract specific elements based on their index or logical conditions.</li>
+<li>It is done using square brackets <code>[ ]</code> in R.</li>
+<li>Subsetting Vector Elements by Index - Subsetting elements by index retrieves specific elements from a vector.</li>
+<li>Subsetting Vector Elements by Logical Condition - Subsetting elements by logical condition retrieves elements based on a specified condition.</li>
+</ul>
+</section>
+<section id="subsetting-vector-elements-by-index" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-vector-elements-by-index">Subsetting Vector Elements by Index</h2>
+<div class="cell" data-hash="index_cache/html/subset-vector-1_ecf810c0dcd8ff4236f124f809796af0">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>vector[<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 30</p>
+</div>
+<ul>
+<li>The vector contains elements: 10, 20, 30, 40, 50.</li>
+<li><code>vector[3]</code> retrieves the third element, which is <code>30</code>.</li>
+<li><code>Result</code>: The third element (30) is displayed.</li>
+</ul>
+</section>
+<section id="subsetting-vector-elements-by-logical-condition" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-vector-elements-by-logical-condition">Subsetting Vector Elements by Logical Condition</h2>
+<div class="cell" data-hash="index_cache/html/subset-vector-2_ce45896c461b77e41bb44f23b15d009f">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>vector[vector <span class="sc">&gt;</span> <span class="dv">30</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 40 50</p>
+</div>
+<ul>
+<li>The vector contains elements: 10, 20, 30, 40, 50.</li>
+<li><code>vector &gt; 30</code> evaluates to a logical vector: FALSE, FALSE, FALSE, TRUE, TRUE.</li>
+<li><code>vector[vector &gt; 30]</code> retrieves elements where the condition is TRUE.</li>
+<li><code>Result</code>: Elements greater than 30 (40, 50) are displayed.</li>
+</ul>
+</section>
+<section id="subsetting-vector-elements-using-operator" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-vector-elements-using-operator">Subsetting Vector Elements Using <code>:</code> Operator</h2>
+<p>The <code>:</code> operator allows you to specify a range of elements to subset from a vector.</p>
+<div class="cell" data-hash="index_cache/html/subset-vector-3_54b20528aac5a4abf7d5af33934e3b69">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>vector[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 20 30 40</p>
+</div>
+<ul>
+<li>The vector contains elements: 10, 20, 30, 40, 50.</li>
+<li><code>2:4</code> creates a sequence of indices from 2 to 4.</li>
+<li><code>vector[2:4]</code> retrieves elements at indices 2, 3, and 4.</li>
+<li><code>Result</code>: Elements 20, 30, and 40 are displayed.</li>
+</ul>
+</section>
+<section id="subsetting-vector-elements-using-c-function" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-vector-elements-using-c-function">Subsetting Vector Elements Using <code>c()</code> Function</h2>
+<p>The <code>c()</code> function allows you to create a vector of specific indices to subset from a vector.</p>
+<div class="cell" data-hash="index_cache/html/subset-vector-4_ee257b792d836aa5b73bb45e3c7523fb">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>vector[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 10 30 50</p>
+</div>
+<ul>
+<li>The vector contains elements: 10, 20, 30, 40, 50.</li>
+<li><code>c(1, 3, 5)</code> creates a vector of indices: 1, 3, 5.</li>
+<li><code>vector[c(1, 3, 5)]</code> retrieves elements at indices 1, 3, and 5.</li>
+<li><code>Result</code>: Elements 10, 30, and 50 are displayed.</li>
+</ul>
+</section>
+<section id="subsetting-list" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-list">Subsetting List</h2>
+<ul>
+<li>Subsetting a list allows you to extract specific elements or subsets from a list in R.</li>
+<li>It is done using double square brackets <code>[[ ]]</code> or single square brackets<code>[ ]</code> in R.</li>
+<li>Subsetting List Elements by Index - Subsetting elements by index retrieves specific elements from a list.</li>
+<li>Subsetting List Elements by Name - Subsetting elements by name allows you to retrieve elements based on their assigned names.</li>
+<li>Subsetting a Subset of List Elements - You can subset a subset of elements from a list using single square brackets <code>[ ]</code>.</li>
+</ul>
+</section>
+<section id="subsetting-list-elements-by-index" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-list-elements-by-index">Subsetting List Elements by Index</h2>
+<div class="cell" data-hash="index_cache/html/subset-list-1_53633043c3bb6bf20b8940ff65186945">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"orange"</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>my_list[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “banana”</p>
+</div>
+<ul>
+<li>The list contains elements: “apple”, “banana”, “orange”.</li>
+<li><code>my_list[[2]]</code> retrieves the second element of the list, which is “banana”.</li>
+<li><code>Result</code>: The second element (“banana”) is displayed.</li>
+</ul>
+</section>
+<section id="subsetting-list-elements-by-name" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-list-elements-by-name">Subsetting List Elements by Name</h2>
+<div class="cell" data-hash="index_cache/html/subset-list-2_c108bbcbe4df1da898642ba9afdc857d">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">fruit1 =</span> <span class="st">"apple"</span>, <span class="at">fruit2 =</span> <span class="st">"banana"</span>, <span class="at">fruit3 =</span> <span class="st">"orange"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>my_list<span class="sc">$</span>fruit3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “orange”</p>
+</div>
+<ul>
+<li>The list contains named elements: fruit1, fruit2, fruit3.</li>
+<li><code>my_list$fruit3</code> retrieves the element with the name “fruit3”, which is “orange”.</li>
+<li><code>Result</code>: The element “orange” is displayed.</li>
+</ul>
+</section>
+<section id="subsetting-a-subset-of-list-elements" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-a-subset-of-list-elements">Subsetting a Subset of List Elements</h2>
+<div class="cell" data-hash="index_cache/html/subset-list-3_baaafe33d9c099341524fb95b26cf9d5">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"orange"</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>my_list[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[[1]] [1] “banana”</p>
+<p>[[2]] [1] “orange”</p>
+</div>
+<ul>
+<li>The list contains elements: “apple”, “banana”, “orange”.</li>
+<li><code>my_list[2:3]</code> retrieves the second and third elements of the list.</li>
+<li><code>Result</code>: The second and third elements (“banana”, “orange”) are displayed.</li>
+</ul>
+</section>
+<section id="subsetting-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-matrix">Subsetting Matrix</h2>
+<ul>
+<li>Subsetting a matrix allows you to extract specific rows, columns, or elements from a matrix in R.</li>
+<li>It is done using square brackets <code>[ ]</code> in combination with row and column indices.</li>
+<li>Subsetting Rows - Subsetting rows allows you to retrieve specific rows from a matrix.</li>
+<li>Subsetting Columns - Subsetting columns allows you to retrieve specific columns from a matrix.</li>
+<li>Subsetting Elements - Subsetting individual elements allows you to retrieve specific elements from a matrix.</li>
+</ul>
+</section>
+<section id="subsetting-rows" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-rows">Subsetting Rows</h2>
+<div class="cell" data-hash="index_cache/html/subset-mat-1_34d35451616a33f1089ebec4d9387d5b">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>matrix[<span class="dv">1</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 1 3 5</p>
+</div>
+<ul>
+<li>The matrix contains elements: 1, 2, 3, 4, 5, 6.</li>
+<li><code>matrix[1, ]</code> retrieves the first row of the matrix.</li>
+<li><code>Result</code>: The first row (1, 2) is displayed.</li>
+</ul>
+</section>
+<section id="subsetting-columns" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-columns">Subsetting Columns</h2>
+<div class="cell" data-hash="index_cache/html/subset-mat-2_9e0a198f1053ce9740a1e8de7eef508a">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>matrix[, <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 3 4</p>
+</div>
+<ul>
+<li>The matrix contains elements: 1, 2, 3, 4, 5, 6.</li>
+<li><code>matrix[, 2]</code> retrieves the second column of the matrix.</li>
+<li><code>Result</code>: The second column (2, 4) is displayed.</li>
+</ul>
+</section>
+<section id="subsetting-elements" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-elements">Subsetting Elements</h2>
+<div class="cell" data-hash="index_cache/html/subset-mat-3_8199318422b9581bda3a591208797834">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>matrix[<span class="dv">2</span>, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 2</p>
+</div>
+<ul>
+<li>The matrix contains elements: 1, 2, 3, 4, 5, 6.</li>
+<li><code>matrix[2, 1]</code>retrieves the element at the second row and first column.</li>
+<li><code>Result</code>: The element at the second row and first column (3) is displayed.</li>
+</ul>
+</section>
+</section>
+<section id="control-flow-in-r" class="level1">
+<h1>Control Flow in R</h1>
+<section id="control-flow-structure" class="level2">
+<h2 class="anchored" data-anchor-id="control-flow-structure">Control Flow Structure</h2>
+<ul>
+<li>Control flow refers to the order in which instructions are executed in a program.</li>
+<li>In R, control flow is managed through various constructs that allow for <code>conditional</code> execution, <code>loop</code> iterations, and branching.</li>
+<li>Conditionals - <code>if</code>, <code>if..else</code>, <code>if..else..elif</code></li>
+<li>Loops - <code>for</code>, <code>while</code>, <code>repeat</code></li>
+</ul>
+</section>
+<section id="if-statement" class="level2">
+<h2 class="anchored" data-anchor-id="if-statement"><code>if</code> statement</h2>
+<p>The <code>if</code> statement allows for conditional execution of code blocks.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_770acf1554590398bce938165ffb9fed">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Syntax </span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) {</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block executed when condition is TRUE</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="if-statement-1" class="level2">
+<h2 class="anchored" data-anchor-id="if-statement-1"><code>if</code> statement</h2>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-6_09fcf5c532e9f0e46f8fea41c142c6c5">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example </span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is positive."</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “x is positive.”</p>
+</div>
+<ul>
+<li>The variable <code>x</code> is assigned a value of <code>5</code>.</li>
+<li>The <code>if</code> statement checks if <code>x</code> is greater than <code>0</code>.</li>
+<li>Since the condition is <code>TRUE</code> (5 is greater than 0), the code block inside the curly braces is executed.</li>
+<li>Result: The message <code>"x is positive."</code> is printed.</li>
+</ul>
+</section>
+<section id="if..else-statement" class="level2">
+<h2 class="anchored" data-anchor-id="if..else-statement"><code>if..else</code> statement</h2>
+<p>The if-else statement allows you to execute different code blocks based on a condition.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-7_1d0c5c21dc1691e45bced82ef3e3e9a0">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Syntax </span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) {</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block executed when condition is TRUE</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block executed when condition is FALSE</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="if..else-statement-1" class="level2">
+<h2 class="anchored" data-anchor-id="if..else-statement-1"><code>if..else</code> statement</h2>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-8_1509f35f569e38668578f7f8970ea125">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example </span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">2</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is positive."</span>)</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is negative."</span>)</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “x is negative.”</p>
+</div>
+<ul>
+<li>The variable <code>x</code> is assigned a value of <code>-2</code>.</li>
+<li>The <code>if</code> statement checks if <code>x</code> is greater than 0.</li>
+<li>Since the condition is <code>FALSE</code> (-2 is not greater than 0), the code block inside the else clause is executed.</li>
+<li>Result: The message <code>"x is negative."</code> is printed.</li>
+</ul>
+</section>
+<section id="if..else-if..else-statement" class="level2">
+<h2 class="anchored" data-anchor-id="if..else-if..else-statement"><code>if..else if..else</code> statement</h2>
+<p>The if-else if-else statement allows you to specify multiple conditions and execute different code blocks accordingly.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-9_acb9a2e01bf90de0079f7d49376e9240">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Syntax </span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition1) {</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block executed when condition1 is TRUE</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (condition2) {</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block executed when condition1 is FALSE and condition2 is TRUE</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block executed when all previous conditions are FALSE</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="if..else-if..else-statement-1" class="level2">
+<h2 class="anchored" data-anchor-id="if..else-if..else-statement-1"><code>if..else if..else</code> statement</h2>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-10_0d5fd0bbc175ecc9649fdc91288be561">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example </span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is positive."</span>)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is negative."</span>)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is zero."</span>)</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “x is zero.”</p>
+</div>
+<ul>
+<li>The variable <code>x</code> is assigned a value of<code>0</code>.</li>
+<li>The <code>if</code> statement checks if x is greater than 0, then if it is less than 0.</li>
+<li>Since none of the conditions are <code>TRUE</code>, the code block inside the else clause is executed.</li>
+<li>Result: The message <code>"x is zero."</code> is printed.</li>
+</ul>
+</section>
+<section id="ifelse-function" class="level2">
+<h2 class="anchored" data-anchor-id="ifelse-function"><code>ifelse</code> function</h2>
+<ul>
+<li>The <code>ifelse()</code> function in R is a vectorized version of the if-else statement.</li>
+<li>It allows you to perform conditional operations on elements of a vector or data frame based on a specified condition.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-11_304dd93bf13a77ee02bfdc303911de21">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Syntax </span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(condition, true_value, false_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ifelse-function-1" class="level2">
+<h2 class="anchored" data-anchor-id="ifelse-function-1"><code>ifelse</code> function</h2>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-12_a2d654cc1d16b19de8eab79afd9b222e">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example </span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(x <span class="sc">&gt;</span> <span class="dv">3</span>, <span class="st">"Greater"</span>, <span class="st">"Less or equal"</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “Less or equal” “Less or equal” “Less or equal” “Greater”<br>
+[5] “Greater”</p>
+</div>
+<ul>
+<li>The vector x contains numeric values.</li>
+<li>The ifelse function checks if each element of x is greater than 3.</li>
+<li>For elements that satisfy the condition (TRUE), the corresponding element in the result is assigned the value “Greater”. Otherwise, it is assigned the value “Less or equal”.</li>
+<li>Result: The result vector will be c(“Less or equal”, “Less or equal”, “Less or equal”, “Greater”, “Greater”).</li>
+</ul>
+</section>
+<section id="handling-missing-values-with-ifelse" class="level2">
+<h2 class="anchored" data-anchor-id="handling-missing-values-with-ifelse">Handling Missing Values with <code>ifelse()</code></h2>
+<p>The ifelse function can handle missing values <code>(NA)</code> in the input vectors.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-13_5d35f0afa770767de3b3c269cb2c13a7">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(x), <span class="st">"Missing"</span>, <span class="fu">ifelse</span>(x <span class="sc">&gt;</span> <span class="dv">3</span>, <span class="st">"Greater"</span>, <span class="st">"Less or equal"</span>))</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “Less or equal” “Less or equal” “Missing” “Greater”<br>
+[5] “Greater”</p>
+</div>
+<ul>
+<li>The vector x contains numeric values, including a missing value (NA).</li>
+<li>The first ifelse checks if each element of x is missing (NA).</li>
+<li>If TRUE, the element is assigned the value “Missing”.</li>
+<li>If FALSE, the second ifelse checks if the element is greater than 3, assigning “Greater” or “Less or equal” accordingly.</li>
+<li>Result: The result vector will be c(“Less or equal”, “Less or equal”, “Missing”, “Greater”, “Greater”).</li>
+</ul>
+</section>
+<section id="ifelse-with-data-frames" class="level2">
+<h2 class="anchored" data-anchor-id="ifelse-with-data-frames"><code>ifelse()</code> with Data Frames</h2>
+<p>The <code>ifelse()</code> function can be applied to specific columns of a data frame.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-14_3a473a21fc3cbbb79f60ce3ef4266a56">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Name =</span> <span class="fu">c</span>(<span class="st">"John"</span>, <span class="st">"Alice"</span>, <span class="st">"Emily"</span>), <span class="at">Age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>))</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Category <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>Age <span class="sc">&gt;=</span> <span class="dv">30</span>, <span class="st">"Senior"</span>, <span class="st">"Junior"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>The data frame df contains columns for names and ages.</li>
+<li>The ifelse function is applied to the Age column.</li>
+<li>If the age is greater than or equal to 30, the Category column is assigned the value “Senior”. Otherwise, it is assigned “Junior”.</li>
+<li>Result: The df data frame will have an additional column Category with values c(“Junior”, “Junior”, “Senior”).</li>
+</ul>
+</section>
+<section id="for-loop" class="level2">
+<h2 class="anchored" data-anchor-id="for-loop"><code>for</code> loop</h2>
+<p>The <code>for</code> loop in R allows for executing a block of code repeatedly for a specified number of iterations.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-15_a4111fb1e83e98b976b9623d23c805d8">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Syntax </span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (variable <span class="cf">in</span> sequence) {</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block to be executed in each iteration</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="for-loop-example" class="level2">
+<h2 class="anchored" data-anchor-id="for-loop-example"><code>for</code> loop Example</h2>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-16_d46e46650a604a1820545ffaf93d9a56">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example </span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 1 [1] 2 [1] 3 [1] 4 [1] 5</p>
+</div>
+<ul>
+<li>The for loop iterates over the sequence 1:5.</li>
+<li>In each iteration, the loop variable i takes the value of the current element in the sequence.</li>
+<li>The code block inside the curly braces is executed for each iteration, which in this case, is printing the value of i.</li>
+<li>Result: The numbers 1 to 5 are printed.</li>
+</ul>
+</section>
+<section id="using-for-loop-with-vector" class="level2">
+<h2 class="anchored" data-anchor-id="using-for-loop-with-vector">Using <code>for</code> Loop with Vector</h2>
+<p>The <code>for</code> loop can be used to iterate over elements of a vector.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-17_44f3d5ecd6559400d68e298e29b871bb">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"orange"</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (fruit <span class="cf">in</span> fruits) {</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(fruit)</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “apple” [1] “banana” [1] “orange”</p>
+</div>
+<ul>
+<li>The vector fruits contains strings representing different fruits.</li>
+<li>The for loop iterates over each element of the fruits vector.</li>
+<li>In each iteration, the loop variable fruit takes the value of the current element.</li>
+<li>The code block inside the curly braces is executed for each iteration, which in this case, is printing the value of fruit.</li>
+<li>Result: The strings “apple”, “banana”, and “orange” are printed.</li>
+</ul>
+</section>
+<section id="controlling-for-loop-with-conditions" class="level2">
+<h2 class="anchored" data-anchor-id="controlling-for-loop-with-conditions">Controlling <code>for</code> Loop with Conditions</h2>
+<p>You can control the behavior of a <code>for</code> loop using conditional statements.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-18_c22620bf3dcd7573336ef852bc410eb3">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">"is even"</span>))</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">"is odd"</span>))</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “1 is odd” [1] “2 is even” [1] “3 is odd” [1] “4 is even” [1] “5 is odd” [1] “6 is even” [1] “7 is odd” [1] “8 is even” [1] “9 is odd” [1] “10 is even”</p>
+</div>
+</section>
+<section id="controlling-for-loop-with-conditions-1" class="level2">
+<h2 class="anchored" data-anchor-id="controlling-for-loop-with-conditions-1">Controlling <code>for</code> Loop with Conditions</h2>
+<ul>
+<li>The for loop iterates over the sequence 1:10.</li>
+<li>In each iteration, the loop variable i takes the value of the current element.</li>
+<li>The if statement checks if i is even (divisible by 2) using the modulo operator (%%).</li>
+<li>Based on the condition, the code block inside the corresponding branch of the if statement is executed, printing whether the number is even or odd.</li>
+<li>Result: The numbers from 1 to 10 are printed along with their even or odd classification.</li>
+</ul>
+</section>
+<section id="while-loop" class="level2">
+<h2 class="anchored" data-anchor-id="while-loop"><code>while</code> loop</h2>
+<p>The <code>while</code> loop in R allows for executing a block of code repeatedly as long as a specified condition is <code>TRUE.</code></p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-19_93e6292cf7553179ed55b2f23b8cfb82">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (condition) {</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block to be executed</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="while-loop-example" class="level2">
+<h2 class="anchored" data-anchor-id="while-loop-example"><code>while</code> Loop Example</h2>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-20_f85ec46582143f031f7e2674041a3a15">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">5</span>) {</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 1 [1] 2 [1] 3 [1] 4 [1] 5</p>
+</div>
+<ul>
+<li>The variable i is initially set to 1.</li>
+<li>The while loop continues executing as long as i is less than or equal to 5.</li>
+<li>In each iteration, the code block inside the curly braces is executed, which in this case, is printing the value of i.</li>
+<li>After printing, i is incremented by 1 using the assignment statement i &lt;- i + 1.</li>
+<li>The loop continues until i becomes greater than 5, at which point the condition becomes FALSE, and the loop terminates.</li>
+<li>Result: The numbers 1 to 5 are printed.</li>
+</ul>
+</section>
+<section id="using-while-loop-with-conditional-statements" class="level2">
+<h2 class="anchored" data-anchor-id="using-while-loop-with-conditional-statements">Using <code>while</code> Loop with Conditional Statements</h2>
+<p>You can use conditional statements within a while loop to control its behavior.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-21_4a0102c12f13a6d74a2ff90e52f3df8c">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">"is even"</span>))</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">"is odd"</span>))</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] “1 is odd” [1] “2 is even” [1] “3 is odd” [1] “4 is even” [1] “5 is odd” [1] “6 is even” [1] “7 is odd” [1] “8 is even” [1] “9 is odd” [1] “10 is even”</p>
+</div>
+</section>
+<section id="using-while-loop-with-conditional-statements-1" class="level2">
+<h2 class="anchored" data-anchor-id="using-while-loop-with-conditional-statements-1">Using <code>while</code> Loop with Conditional Statements</h2>
+<ul>
+<li>The variable i is initially set to 1.</li>
+<li>The while loop continues executing as long as i is less than or equal to 10.</li>
+<li>In each iteration, the if statement checks if i is even (divisible by 2) using the modulo operator (%%).</li>
+<li>Based on the condition, the code block inside the corresponding branch of the if statement is executed, printing whether the number is even or odd.</li>
+<li>After executing the code block, i is incremented by 1 using the assignment statement i &lt;- i + 1.</li>
+<li>Result: The numbers from 1 to 10 are printed along with their even or odd classification.</li>
+</ul>
+</section>
+<section id="controlling-while-loop-with-external-conditions" class="level2">
+<h2 class="anchored" data-anchor-id="controlling-while-loop-with-external-conditions">Controlling <code>while</code> Loop with External Conditions</h2>
+<p>You can control the behavior of a <code>while</code> loop by modifying external conditions within the loop.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-22_a8854d405629afcf7c78d455dd9ed1c6">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(x)</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x <span class="sc">-</span> <span class="dv">2</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 10 [1] 8 [1] 6 [1] 4 [1] 2</p>
+</div>
+</section>
+<section id="controlling-while-loop-with-external-conditions-1" class="level2">
+<h2 class="anchored" data-anchor-id="controlling-while-loop-with-external-conditions-1">Controlling <code>while</code> Loop with External Conditions</h2>
+<ul>
+<li>The variable x is initially set to 10.</li>
+<li>The while loop continues executing as long as x is greater than 0.</li>
+<li>In each iteration, the code block inside the curly braces is executed, which in this case, is printing the value of x.</li>
+<li>After printing, x is decremented by 2 using the assignment statement x &lt;- x - 2.</li>
+<li>The loop continues until x becomes non-positive, at which point the condition becomes FALSE, and the loop terminates.</li>
+<li>Result: The numbers 10, 8, 6, 4, and 2 are printed.</li>
+</ul>
+</section>
+<section id="break-statement" class="level2">
+<h2 class="anchored" data-anchor-id="break-statement"><code>break</code> statement</h2>
+<ul>
+<li>The break statement in R is used to exit a loop prematurely.</li>
+<li>It is typically used within conditional statements to terminate the loop based on a specific condition.</li>
+</ul>
+</section>
+<section id="break-statement-example" class="level2">
+<h2 class="anchored" data-anchor-id="break-statement-example"><code>break</code> Statement Example</h2>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-23_960552ab992512076c19d8d45050f694">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">5</span>) {</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 1 [1] 2 [1] 3 [1] 4 [1] 5</p>
+</div>
+</section>
+<section id="break-statement-example-1" class="level2">
+<h2 class="anchored" data-anchor-id="break-statement-example-1"><code>break</code> Statement Example</h2>
+<ul>
+<li>The variable i is initially set to 1.</li>
+<li>The while loop continues executing as long as i is less than or equal to 10.</li>
+<li>In each iteration, the code block inside the curly braces is executed, which in this case, is printing the value of i.</li>
+<li>The if statement checks if i is equal to 5.</li>
+<li>If the condition is TRUE, the break statement is encountered, causing the loop to terminate immediately.</li>
+<li>After the break statement, the remaining code within the loop is not executed.</li>
+<li>Result: The numbers 1 to 5 are printed, and the loop terminates when i becomes 5.</li>
+</ul>
+</section>
+<section id="next-statement" class="level2">
+<h2 class="anchored" data-anchor-id="next-statement"><code>next</code> statement</h2>
+<ul>
+<li>The next statement in R is used to skip the current iteration of a loop and move to the next iteration.</li>
+<li>It is typically used within conditional statements to control the flow of the loop based on a specific condition.</li>
+</ul>
+</section>
+<section id="next-statement-example" class="level2">
+<h2 class="anchored" data-anchor-id="next-statement-example"><code>next</code> Statement Example</h2>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-24_ff8326d83b967503521ca72bd67f3cf8">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">3</span>) {</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 1 [1] 2 [1] 4 [1] 5</p>
+</div>
+<ul>
+<li>The for loop iterates over the values 1 to 5.</li>
+<li>In each iteration, the code block inside the curly braces is executed.</li>
+<li>The if statement checks if i is equal to 3.</li>
+<li>If the condition is TRUE, the next statement is encountered, causing the current iteration to be skipped, and the program flow moves to the next iteration.</li>
+<li>If the condition is FALSE, the code block continues executing, and the value of i is printed.</li>
+<li>Result: The numbers 1, 2, 4, and 5 are printed. The iteration with i equal to 3 is skipped.</li>
+</ul>
+</section>
+<section id="repeat-loop" class="level2">
+<h2 class="anchored" data-anchor-id="repeat-loop"><code>repeat</code> loop</h2>
+<ul>
+<li>The repeat loop in R allows for executing a block of code repeatedly until a specified condition is met.</li>
+<li>It provides a way to create an infinite loop that can be terminated using control flow statements.</li>
+</ul>
+</section>
+<section id="repeat-loop-example" class="level2">
+<h2 class="anchored" data-anchor-id="repeat-loop-example"><code>repeat</code> loop Example</h2>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-25_ceb82f5845b3da840e154b6c42e6f574">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">5</span>) {</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 1 [1] 2 [1] 3 [1] 4 [1] 5</p>
+</div>
+</section>
+<section id="repeat-loop-example-1" class="level2">
+<h2 class="anchored" data-anchor-id="repeat-loop-example-1"><code>repeat</code> loop Example</h2>
+<ul>
+<li>The variable i is initially set to 1.</li>
+<li>The repeat loop continues executing the code block inside the curly braces indefinitely.</li>
+<li>In each iteration, the value of i is printed.</li>
+<li>The variable i is incremented by 1 using the assignment statement i &lt;- i + 1.</li>
+<li>The if statement checks if i is greater than 5.</li>
+<li>If the condition is TRUE, the break statement is encountered, causing the loop to terminate.</li>
+<li>After the break statement, the program flow continues with the next statement after the loop.</li>
+<li>Result: The numbers 1 to 5 are printed, and the loop terminates when i becomes greater than 5.</li>
+</ul>
+</section>
+</section>
+<section id="functions" class="level1">
+<h1>Functions</h1>
+<section id="functions-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="functions-in-r">Functions in R</h2>
+<ul>
+<li>Functions in R are blocks of reusable code that perform specific tasks.</li>
+<li>They provide modularity and allow for the organization and reuse of code.</li>
+<li>Functions can accept input arguments, perform computations, and return output values.</li>
+</ul>
+</section>
+<section id="types-of-functions-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-functions-in-r">Types of Functions in R</h2>
+<ul>
+<li>Built-in Functions</li>
+<li>User-Defined Functions</li>
+<li>Recursive Functions</li>
+<li>Anonymous Functions (Lambda Functions)</li>
+<li>Higher-Order Functions</li>
+</ul>
+</section>
+<section id="built-in-functions" class="level2">
+<h2 class="anchored" data-anchor-id="built-in-functions">Built-in Functions</h2>
+<ul>
+<li>R comes with a wide range of built-in functions that are available for immediate use.</li>
+<li>Examples: <code>mean()</code>, <code>sum()</code>, <code>max()</code>, <code>min()</code>, <code>sqrt()</code>, <code>length()</code>, etc.</li>
+<li>These functions are part of the R language and provide basic operations and computations.</li>
+</ul>
+</section>
+<section id="user-defined-functions" class="level2">
+<h2 class="anchored" data-anchor-id="user-defined-functions">User-Defined Functions</h2>
+<ul>
+<li>Users can define their own functions in R to perform specific tasks.</li>
+<li>These functions are created using the function keyword followed by the function name, arguments, and function body.</li>
+<li>Examples: Custom functions created by users to solve specific problems.</li>
+</ul>
+</section>
+<section id="recursive-functions" class="level2">
+<h2 class="anchored" data-anchor-id="recursive-functions">Recursive Functions</h2>
+<ul>
+<li>Recursive functions are functions that call themselves during their execution.</li>
+<li>They are useful for solving problems that can be broken down into smaller, similar sub-problems.</li>
+<li>Examples: Functions that calculate factorials, Fibonacci series, or perform tree traversal.</li>
+</ul>
+</section>
+<section id="anonymous-functions-lambda-functions" class="level2">
+<h2 class="anchored" data-anchor-id="anonymous-functions-lambda-functions">Anonymous Functions (Lambda Functions)</h2>
+<ul>
+<li>Anonymous functions, also known as lambda functions, are functions without a formal name.</li>
+<li>They are typically used for one-time or short computations and are defined using the function keyword without assigning them to a variable.</li>
+<li>Examples: Functions used with higher-order functions like <code>apply()</code>, <code>lapply()</code>, <code>sapply()</code>, etc.</li>
+</ul>
+</section>
+<section id="higher-order-functions" class="level2">
+<h2 class="anchored" data-anchor-id="higher-order-functions">Higher-Order Functions</h2>
+<ul>
+<li>Higher-order functions take other functions as arguments or return functions as their output.</li>
+<li>They allow for functional programming paradigms in R.</li>
+<li>Examples: <code>apply()</code> family of functions, <code>map()</code> functions from the purrr package.</li>
+</ul>
+</section>
+<section id="creating-a-function" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-function">Creating a Function</h2>
+<ul>
+<li>To create a function in R, use the function keyword followed by the function name and parentheses for the input arguments.</li>
+<li>The function body is enclosed in curly braces {} and contains the code to be executed.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-26_9038620c1901ad41712fcae608f4ca46">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># empty function</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Function have their own class </span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(f) </span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Execute / Call this function</span></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creating-a-function-1" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-function-1">Creating a Function</h2>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-27_01dcfea6703d2df458cc208ca64f082f">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function definition</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2) {</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Perform computations</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> arg1 <span class="sc">+</span> arg2</span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="calling-a-function" class="level2">
+<h2 class="anchored" data-anchor-id="calling-a-function">Calling a Function</h2>
+<ul>
+<li>To call a function in R, use the function name followed by parentheses, passing the required input arguments.</li>
+<li>The function executes the code within its body and returns the specified output.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-28_1e61eb7759566eb7c6229535bbabceb6">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function call</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">my_function</span>(<span class="dv">3</span>, <span class="dv">5</span>)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 8</p>
+</div>
+</section>
+<section id="function-with-default-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="function-with-default-arguments">Function with Default Arguments</h2>
+<ul>
+<li>Functions in R can have default values assigned to their arguments, which are used when the arguments are not explicitly provided during function call.</li>
+<li>Default arguments are defined using the assignment operator (=) within the function definition.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-29_7239cf84acdda9235762be9da0dc64cd">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function definition with default argument</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>greet <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">name =</span> <span class="st">"Guest"</span>) {</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  message <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Hello,"</span>, name)</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(message)</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="function-with-variable-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="function-with-variable-arguments">Function with Variable Arguments</h2>
+<ul>
+<li>In R, functions can accept variable arguments using the <code>...</code> notation.</li>
+<li>Variable arguments allow for flexibility in the number of inputs passed to the function.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-30_6b7fbe5f5078f67b343d48c3bdb11e39">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function definition with variable arguments</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>calculate_sum <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  numbers <span class="ot">&lt;-</span> <span class="fu">list</span>(...)</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">&lt;-</span> <span class="fu">sum</span>(numbers)</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(total)</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="dates-and-times" class="level1">
+<h1>Dates and Times</h1>
+<section id="working-with-dates-and-times-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-dates-and-times-in-r">Working with Dates and Times in R</h2>
+<ul>
+<li>Dates and times in R can be represented using different classes and functions.</li>
+<li>Let’s explore some common operations and functions related to dates and times in R.</li>
+</ul>
+</section>
+<section id="date-and-time-classes" class="level2">
+<h2 class="anchored" data-anchor-id="date-and-time-classes">Date and Time Classes</h2>
+<ul>
+<li><code>Date class</code>: Represents dates without time information.</li>
+<li><code>POSIXct class</code>: Represents dates and times with second-level precision.</li>
+<li><code>POSIXlt class</code>: Represents dates and times as a list of components.</li>
+</ul>
+</section>
+<section id="creating-dates-and-times" class="level2">
+<h2 class="anchored" data-anchor-id="creating-dates-and-times">Creating Dates and Times</h2>
+<ul>
+<li><code>as.Date()</code>: Converts a character or numeric value to a Date object.</li>
+<li><code>as.POSIXct()</code> or as.<code>POSIXlt()</code>: Converts a character or numeric value to a POSIXct or POSIXlt object.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-31_a9f4a0c1f4544dd8c83f48fe7a64d2d9">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2023-07-05"</span>)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>datetime <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">"2023-07-05 10:30:00"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="formatting-and-parsing-dates-and-times" class="level2">
+<h2 class="anchored" data-anchor-id="formatting-and-parsing-dates-and-times">Formatting and Parsing Dates and Times</h2>
+<ul>
+<li><code>format()</code>: Converts a date or time object to a character string with a specified format.</li>
+<li><code>strptime()</code>: Parses a character string representing a date or time into a POSIXlt object, based on a specified format.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-32_4eae4f7d0e8d40110a773acc1f255774">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>formatted_date <span class="ot">&lt;-</span> <span class="fu">format</span>(date, <span class="at">format =</span> <span class="st">"%Y/%m/%d"</span>)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>parsed_datetime <span class="ot">&lt;-</span> <span class="fu">strptime</span>(<span class="st">"2023-07-05 10:30:00"</span>, <span class="at">format =</span> <span class="st">"%Y-%m-%d %H:%M:%S"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="extracting-components" class="level2">
+<h2 class="anchored" data-anchor-id="extracting-components">Extracting Components</h2>
+<p>Functions like<code>year()</code>, <code>month()</code>, <code>day()</code>, <code>hour()</code>, <code>minute()</code>, <code>second()</code> can be used to extract specific components from date and time objects.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-33_abeb7767f9c6bfbe300c794cca543d37">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>hour <span class="ot">&lt;-</span> parsed_datetime<span class="sc">$</span>hour</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>minute <span class="ot">&lt;-</span> parsed_datetime<span class="sc">$</span>min</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>second <span class="ot">&lt;-</span> parsed_datetime<span class="sc">$</span>sec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="arithmetic-operations" class="level2">
+<h2 class="anchored" data-anchor-id="arithmetic-operations">Arithmetic Operations</h2>
+<ul>
+<li>Dates and times can be manipulated using arithmetic operations.</li>
+<li>Arithmetic operations on Date objects return new <code>Date</code> objects.</li>
+<li>Arithmetic operations on <code>POSIXct</code> objects return new <code>POSIXct</code> objects, maintaining the time information.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-34_97cc1f835f8b8b0c8404cd5fbf51159e">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>next_day <span class="ot">&lt;-</span> date <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="time-zones" class="level2">
+<h2 class="anchored" data-anchor-id="time-zones">Time Zones</h2>
+<ul>
+<li>R allows working with dates and times in different time zones.</li>
+<li>Time zones can be specified using the tz parameter when creating or converting date and time objects.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-35_1b2c92a806c67a2820d6921da5b89429">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>datetime_ny <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">"2023-07-05 10:30:00"</span>, <span class="at">tz =</span> <span class="st">"America/New_York"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Dates and times in R are represented using different classes: Date, POSIXct, and POSIXlt.</li>
+<li>Functions like <code>as.Date()</code>, a<code>s.POSIXct()</code>, <code>format()</code>, <code>strptime()</code>, etc., facilitate working with dates and times.</li>
+</ul>
+</section>
+</section>
+<section id="loop-functions" class="level1">
+<h1>Loop Functions</h1>
+<section id="loop-functions---apply-family" class="level2">
+<h2 class="anchored" data-anchor-id="loop-functions---apply-family">Loop Functions - Apply Family</h2>
+<ul>
+<li>The <code>apply</code> family of functions in R provides a convenient way to apply a function to subsets of data structures such as vectors, matrices, and data frames.</li>
+<li>These functions eliminate the need for explicit looping and can significantly simplify code.</li>
+</ul>
+</section>
+<section id="apply" class="level2">
+<h2 class="anchored" data-anchor-id="apply"><code>apply()</code></h2>
+<ul>
+<li>apply() function applies a function over margins of an array or matrix.</li>
+<li>Syntax: apply(X, MARGIN, FUN, …)</li>
+<li>X: The input data structure (array or matrix).</li>
+<li>MARGIN: The dimension or dimensions along which the function should be applied.</li>
+<li>FUN: The function to be applied.</li>
+<li>…: Additional arguments to be passed to the function.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-36_58e748130421c8bf21b2ab53a53696e4">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply sum function to rows of a matrix</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">apply</span>(mat, <span class="dv">1</span>, sum)</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[1] 12 15 18</p>
+</div>
+</section>
+<section id="lapply" class="level2">
+<h2 class="anchored" data-anchor-id="lapply"><code>lapply()</code></h2>
+<ul>
+<li>lapply() function applies a function to each element of a list or vector.</li>
+<li>Syntax: lapply(X, FUN, …)</li>
+<li>X: The input list or vector.</li>
+<li>FUN: The function to be applied.</li>
+<li>…: Additional arguments to be passed to the function.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-37_ad1c700b4c578690d021725ba96b294d">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply sqrt function to each element of a list</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">4</span>, <span class="at">b =</span> <span class="dv">9</span>, <span class="at">c =</span> <span class="dv">16</span>)</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">lapply</span>(numbers, sqrt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sapply" class="level2">
+<h2 class="anchored" data-anchor-id="sapply"><code>sapply()</code></h2>
+<ul>
+<li>sapply() function is similar to lapply() but simplifies the result into a vector, matrix, or array if possible.</li>
+<li>Syntax: sapply(X, FUN, …)</li>
+<li>X: The input list or vector.</li>
+<li>FUN: The function to be applied.</li>
+<li>…: Additional arguments to be passed to the function.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-38_6d1d4f74fde66d9ac377434dd91ca807">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply sum function to each element of a list and simplify the result</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">4</span>, <span class="at">b =</span> <span class="dv">9</span>, <span class="at">c =</span> <span class="dv">16</span>)</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">sapply</span>(numbers, sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="vapply" class="level2">
+<h2 class="anchored" data-anchor-id="vapply"><code>vapply()</code></h2>
+<ul>
+<li>vapply() function is similar to sapply() but allows specifying the output type and shape explicitly.</li>
+<li>Syntax: vapply(X, FUN, FUN.VALUE, …)</li>
+<li>X: The input list or vector.</li>
+<li>FUN: The function to be applied.</li>
+<li>FUN.VALUE: The desired output type and shape.</li>
+<li>…: Additional arguments to be passed to the function.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-39_5433ab36f9576f3bed64909bbad29931">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply sum function to each element of a list and specify the output type</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">4</span>, <span class="at">b =</span> <span class="dv">9</span>, <span class="at">c =</span> <span class="dv">16</span>)</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">vapply</span>(numbers, sum, <span class="at">FUN.VALUE =</span> <span class="fu">numeric</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="mapply" class="level2">
+<h2 class="anchored" data-anchor-id="mapply"><code>mapply()</code></h2>
+<ul>
+<li>mapply() function applies a function to multiple vectors or lists in parallel.</li>
+<li>Syntax: mapply(FUN, …, MoreArgs = NULL, SIMPLIFY = TRUE)</li>
+<li>FUN: The function to be applied.</li>
+<li>…: Multiple input vectors or lists.</li>
+<li>MoreArgs: Additional arguments to be passed to the function.</li>
+<li>SIMPLIFY: Whether to simplify the result if possible.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-40_39b8753f7345859f6471df7613b1d8c1">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply a function to multiple vectors in parallel</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>vector1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="simulations---generating-random-numbers" class="level1">
+<h1>Simulations - Generating Random Numbers</h1>
+<section id="simulations" class="level2">
+<h2 class="anchored" data-anchor-id="simulations">Simulations</h2>
+<ul>
+<li>Simulations play a crucial role in statistical analysis and modeling.</li>
+<li>R provides various functions to generate random numbers and conduct simulations.</li>
+</ul>
+</section>
+<section id="generating-random-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="generating-random-numbers">Generating Random Numbers</h2>
+<ul>
+<li>runif(): Generates random numbers from a uniform distribution.</li>
+<li>Syntax: runif(n, min = 0, max = 1)</li>
+<li>n: Number of random numbers to generate.</li>
+<li>min: Minimum value of the range.</li>
+<li>max: Maximum value of the range.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-41_016c85ea10589aae0e9f0667b22873e6">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 5 random numbers between 0 and 1</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>random_numbers <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="generating-random-integers" class="level2">
+<h2 class="anchored" data-anchor-id="generating-random-integers">Generating Random Integers</h2>
+<ul>
+<li>sample(): Generates random integers from a specified range.</li>
+<li>Syntax: sample(x, size, replace = FALSE)</li>
+<li>x: A vector of values from which to sample.</li>
+<li>size: Number of random integers to generate.</li>
+<li>replace: Whether sampling should be done with replacement.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-42_1294ad5a752a97c26c37b435347ee055">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 3 random integers from 1 to 10</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>random_integers <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="generating-random-samples-from-a-vector" class="level2">
+<h2 class="anchored" data-anchor-id="generating-random-samples-from-a-vector">Generating Random Samples from a Vector</h2>
+<ul>
+<li>sample(): Generates random samples from a vector.</li>
+<li>Syntax: sample(x, size, replace = FALSE)</li>
+<li>x: A vector of values from which to sample.</li>
+<li>size: Number of random samples to generate.</li>
+<li>replace: Whether sampling should be done with replacement.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-43_5de10f0cbd156e040818f052ee52779f">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a random sample of 4 elements from a vector</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>, <span class="st">"E"</span>)</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>random_sample <span class="ot">&lt;-</span> <span class="fu">sample</span>(vector, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="generating-random-numbers-from-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="generating-random-numbers-from-distributions">Generating Random Numbers from Distributions</h2>
+<ul>
+<li>R provides functions to generate random numbers from various probability distributions:
+<ul>
+<li>rnorm(): Generates random numbers from a normal distribution.</li>
+<li>rexp(): Generates random numbers from an exponential distribution.</li>
+<li>rgamma(): Generates random numbers from a gamma distribution.</li>
+<li>rbinom(): Generates random numbers from a binomial distribution.</li>
+<li>rpois(): Generates random numbers from a Poisson distribution.</li>
+</ul></li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-44_b1831005263c2a013254667876dbd124">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 5 random numbers from a normal distribution with mean 0 and standard deviation 1</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>random_numbers <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="seeding-random-number-generation" class="level2">
+<h2 class="anchored" data-anchor-id="seeding-random-number-generation">Seeding Random Number Generation</h2>
+<ul>
+<li>To reproduce random results, set a seed value using set.seed().</li>
+<li>Syntax: set.seed(seed)</li>
+<li>seed: A numeric value to initialize the random number generator.</li>
+</ul>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-45_02ddc954434185daffc8ef4b63d10749">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set a seed value for reproducibility</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="questions" class="level1">
+<h1>Questions?</h1>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Copyright 2022, Md. Jubayer Hossain</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>

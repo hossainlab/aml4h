@@ -1,0 +1,14 @@
+---
+title: "Prework"
+format: 
+  html:
+    code-fold: false
+    code-tools: false
+editor: source
+---
+
+Before starting the course, we recommend completing the following prework to ensure a smooth learning experience. As this course will extensively use Python for machine learning tasks, you'll need to have specific packages installed. Follow the instructions below to set up your development environment:
+
+1. Install Python: If you don't have Python installed on your system, download the latest version from the official website (<https://www.python.org/downloads/>) and follow the installation instructions for your operating system.
+
+2. Install Anaconda (Optional but recommended):

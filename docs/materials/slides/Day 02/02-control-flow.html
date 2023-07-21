@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>control-flow</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../prework.html" rel="" target="">
+ <span class="menu-text">Prework</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../setup-guide.html" rel="" target="">
+ <span class="menu-text">Setup Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../resources.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../q-and-a.html" rel="" target="">
+ <span class="menu-text">FAQs</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://omicscenter.github.io/" rel="" target=""><i class="bi bi-globe" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/omicscenter" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/omicscenter" rel="" target=""><i class="bi bi-facebook" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/company/chiral-bangladesh/" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#control-flow-in-r" id="toc-control-flow-in-r" class="nav-link active" data-scroll-target="#control-flow-in-r">Control Flow in R</a>
+  <ul class="collapse">
+  <li><a href="#control-flow-structure" id="toc-control-flow-structure" class="nav-link" data-scroll-target="#control-flow-structure">Control Flow Structure</a></li>
+  <li><a href="#if-statement" id="toc-if-statement" class="nav-link" data-scroll-target="#if-statement"><code>if</code> statement</a></li>
+  <li><a href="#if-statement-1" id="toc-if-statement-1" class="nav-link" data-scroll-target="#if-statement-1"><code>if</code> statement</a></li>
+  <li><a href="#if..else-statement" id="toc-if..else-statement" class="nav-link" data-scroll-target="#if..else-statement"><code>if..else</code> statement</a></li>
+  <li><a href="#if..else-statement-1" id="toc-if..else-statement-1" class="nav-link" data-scroll-target="#if..else-statement-1"><code>if..else</code> statement</a></li>
+  <li><a href="#if..else-if..else-statement" id="toc-if..else-if..else-statement" class="nav-link" data-scroll-target="#if..else-if..else-statement"><code>if..else if..else</code> statement</a></li>
+  <li><a href="#if..else-if..else-statement-1" id="toc-if..else-if..else-statement-1" class="nav-link" data-scroll-target="#if..else-if..else-statement-1"><code>if..else if..else</code> statement</a></li>
+  <li><a href="#ifelse-function" id="toc-ifelse-function" class="nav-link" data-scroll-target="#ifelse-function"><code>ifelse</code> function</a></li>
+  <li><a href="#ifelse-function-1" id="toc-ifelse-function-1" class="nav-link" data-scroll-target="#ifelse-function-1"><code>ifelse</code> function</a></li>
+  <li><a href="#handling-missing-values-with-ifelse" id="toc-handling-missing-values-with-ifelse" class="nav-link" data-scroll-target="#handling-missing-values-with-ifelse">Handling Missing Values with <code>ifelse()</code></a></li>
+  <li><a href="#ifelse-with-data-frames" id="toc-ifelse-with-data-frames" class="nav-link" data-scroll-target="#ifelse-with-data-frames"><code>ifelse()</code> with Data Frames</a></li>
+  <li><a href="#for-loop" id="toc-for-loop" class="nav-link" data-scroll-target="#for-loop"><code>for</code> loop</a></li>
+  <li><a href="#for-loop-example" id="toc-for-loop-example" class="nav-link" data-scroll-target="#for-loop-example"><code>for</code> loop Example</a></li>
+  <li><a href="#using-for-loop-with-vector" id="toc-using-for-loop-with-vector" class="nav-link" data-scroll-target="#using-for-loop-with-vector">Using <code>for</code> Loop with Vector</a></li>
+  <li><a href="#controlling-for-loop-with-conditions" id="toc-controlling-for-loop-with-conditions" class="nav-link" data-scroll-target="#controlling-for-loop-with-conditions">Controlling <code>for</code> Loop with Conditions</a></li>
+  <li><a href="#controlling-for-loop-with-conditions-1" id="toc-controlling-for-loop-with-conditions-1" class="nav-link" data-scroll-target="#controlling-for-loop-with-conditions-1">Controlling <code>for</code> Loop with Conditions</a></li>
+  <li><a href="#while-loop" id="toc-while-loop" class="nav-link" data-scroll-target="#while-loop"><code>while</code> loop</a></li>
+  <li><a href="#while-loop-example" id="toc-while-loop-example" class="nav-link" data-scroll-target="#while-loop-example"><code>while</code> Loop Example</a></li>
+  <li><a href="#using-while-loop-with-conditional-statements" id="toc-using-while-loop-with-conditional-statements" class="nav-link" data-scroll-target="#using-while-loop-with-conditional-statements">Using <code>while</code> Loop with Conditional Statements</a></li>
+  <li><a href="#using-while-loop-with-conditional-statements-1" id="toc-using-while-loop-with-conditional-statements-1" class="nav-link" data-scroll-target="#using-while-loop-with-conditional-statements-1">Using <code>while</code> Loop with Conditional Statements</a></li>
+  <li><a href="#controlling-while-loop-with-external-conditions" id="toc-controlling-while-loop-with-external-conditions" class="nav-link" data-scroll-target="#controlling-while-loop-with-external-conditions">Controlling <code>while</code> Loop with External Conditions</a></li>
+  <li><a href="#controlling-while-loop-with-external-conditions-1" id="toc-controlling-while-loop-with-external-conditions-1" class="nav-link" data-scroll-target="#controlling-while-loop-with-external-conditions-1">Controlling <code>while</code> Loop with External Conditions</a></li>
+  <li><a href="#break-statement" id="toc-break-statement" class="nav-link" data-scroll-target="#break-statement"><code>break</code> statement</a></li>
+  <li><a href="#break-statement-example" id="toc-break-statement-example" class="nav-link" data-scroll-target="#break-statement-example"><code>break</code> Statement Example</a></li>
+  <li><a href="#break-statement-example-1" id="toc-break-statement-example-1" class="nav-link" data-scroll-target="#break-statement-example-1"><code>break</code> Statement Example</a></li>
+  <li><a href="#next-statement" id="toc-next-statement" class="nav-link" data-scroll-target="#next-statement"><code>next</code> statement</a></li>
+  <li><a href="#next-statement-example" id="toc-next-statement-example" class="nav-link" data-scroll-target="#next-statement-example"><code>next</code> Statement Example</a></li>
+  <li><a href="#repeat-loop" id="toc-repeat-loop" class="nav-link" data-scroll-target="#repeat-loop"><code>repeat</code> loop</a></li>
+  <li><a href="#repeat-loop-example" id="toc-repeat-loop-example" class="nav-link" data-scroll-target="#repeat-loop-example"><code>repeat</code> loop Example</a></li>
+  <li><a href="#repeat-loop-example-1" id="toc-repeat-loop-example-1" class="nav-link" data-scroll-target="#repeat-loop-example-1"><code>repeat</code> loop Example</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="control-flow-in-r" class="level1">
+<h1>Control Flow in R</h1>
+<section id="control-flow-structure" class="level2">
+<h2 class="anchored" data-anchor-id="control-flow-structure">Control Flow Structure</h2>
+<ul>
+<li>Control flow refers to the order in which instructions are executed in a program.</li>
+<li>In R, control flow is managed through various constructs that allow for <code>conditional</code> execution, <code>loop</code> iterations, and branching.</li>
+<li>Conditionals - <code>if</code>, <code>if..else</code>, <code>if..else..elif</code></li>
+<li>Loops - <code>for</code>, <code>while</code>, <code>repeat</code></li>
+</ul>
+</section>
+<section id="if-statement" class="level2">
+<h2 class="anchored" data-anchor-id="if-statement"><code>if</code> statement</h2>
+<p>The <code>if</code> statement allows for conditional execution of code blocks.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Syntax </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block executed when condition is TRUE</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="if-statement-1" class="level2">
+<h2 class="anchored" data-anchor-id="if-statement-1"><code>if</code> statement</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is positive."</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "x is positive."</code></pre>
+</div>
+</div>
+<ul>
+<li>The variable <code>x</code> is assigned a value of <code>5</code>.</li>
+<li>The <code>if</code> statement checks if <code>x</code> is greater than <code>0</code>.</li>
+<li>Since the condition is <code>TRUE</code> (5 is greater than 0), the code block inside the curly braces is executed.</li>
+<li>Result: The message <code>"x is positive."</code> is printed.</li>
+</ul>
+</section>
+<section id="if..else-statement" class="level2">
+<h2 class="anchored" data-anchor-id="if..else-statement"><code>if..else</code> statement</h2>
+<p>The if-else statement allows you to execute different code blocks based on a condition.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Syntax </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block executed when condition is TRUE</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block executed when condition is FALSE</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="if..else-statement-1" class="level2">
+<h2 class="anchored" data-anchor-id="if..else-statement-1"><code>if..else</code> statement</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">2</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is positive."</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is negative."</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "x is negative."</code></pre>
+</div>
+</div>
+<ul>
+<li>The variable <code>x</code> is assigned a value of <code>-2</code>.</li>
+<li>The <code>if</code> statement checks if <code>x</code> is greater than 0.</li>
+<li>Since the condition is <code>FALSE</code> (-2 is not greater than 0), the code block inside the else clause is executed.</li>
+<li>Result: The message <code>"x is negative."</code> is printed.</li>
+</ul>
+</section>
+<section id="if..else-if..else-statement" class="level2">
+<h2 class="anchored" data-anchor-id="if..else-if..else-statement"><code>if..else if..else</code> statement</h2>
+<p>The if-else if-else statement allows you to specify multiple conditions and execute different code blocks accordingly.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Syntax </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition1) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block executed when condition1 is TRUE</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (condition2) {</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block executed when condition1 is FALSE and condition2 is TRUE</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block executed when all previous conditions are FALSE</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="if..else-if..else-statement-1" class="level2">
+<h2 class="anchored" data-anchor-id="if..else-if..else-statement-1"><code>if..else if..else</code> statement</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is positive."</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is negative."</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is zero."</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "x is zero."</code></pre>
+</div>
+</div>
+<ul>
+<li>The variable <code>x</code> is assigned a value of<code>0</code>.</li>
+<li>The <code>if</code> statement checks if x is greater than 0, then if it is less than 0.</li>
+<li>Since none of the conditions are <code>TRUE</code>, the code block inside the else clause is executed.</li>
+<li>Result: The message <code>"x is zero."</code> is printed.</li>
+</ul>
+</section>
+<section id="ifelse-function" class="level2">
+<h2 class="anchored" data-anchor-id="ifelse-function"><code>ifelse</code> function</h2>
+<ul>
+<li>The <code>ifelse()</code> function in R is a vectorized version of the if-else statement.</li>
+<li>It allows you to perform conditional operations on elements of a vector or data frame based on a specified condition.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Syntax </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(condition, true_value, false_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ifelse-function-1" class="level2">
+<h2 class="anchored" data-anchor-id="ifelse-function-1"><code>ifelse</code> function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(x <span class="sc">&gt;</span> <span class="dv">3</span>, <span class="st">"Greater"</span>, <span class="st">"Less or equal"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Less or equal" "Less or equal" "Less or equal" "Greater"      
+[5] "Greater"      </code></pre>
+</div>
+</div>
+<ul>
+<li>The vector x contains numeric values.</li>
+<li>The ifelse function checks if each element of x is greater than 3.</li>
+<li>For elements that satisfy the condition (TRUE), the corresponding element in the result is assigned the value “Greater”. Otherwise, it is assigned the value “Less or equal”.</li>
+<li>Result: The result vector will be c(“Less or equal”, “Less or equal”, “Less or equal”, “Greater”, “Greater”).</li>
+</ul>
+</section>
+<section id="handling-missing-values-with-ifelse" class="level2">
+<h2 class="anchored" data-anchor-id="handling-missing-values-with-ifelse">Handling Missing Values with <code>ifelse()</code></h2>
+<p>The ifelse function can handle missing values <code>(NA)</code> in the input vectors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(x), <span class="st">"Missing"</span>, <span class="fu">ifelse</span>(x <span class="sc">&gt;</span> <span class="dv">3</span>, <span class="st">"Greater"</span>, <span class="st">"Less or equal"</span>))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Less or equal" "Less or equal" "Missing"       "Greater"      
+[5] "Greater"      </code></pre>
+</div>
+</div>
+<ul>
+<li>The vector x contains numeric values, including a missing value (NA).</li>
+<li>The first ifelse checks if each element of x is missing (NA).</li>
+<li>If TRUE, the element is assigned the value “Missing”.</li>
+<li>If FALSE, the second ifelse checks if the element is greater than 3, assigning “Greater” or “Less or equal” accordingly.</li>
+<li>Result: The result vector will be c(“Less or equal”, “Less or equal”, “Missing”, “Greater”, “Greater”).</li>
+</ul>
+</section>
+<section id="ifelse-with-data-frames" class="level2">
+<h2 class="anchored" data-anchor-id="ifelse-with-data-frames"><code>ifelse()</code> with Data Frames</h2>
+<p>The <code>ifelse()</code> function can be applied to specific columns of a data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Name =</span> <span class="fu">c</span>(<span class="st">"John"</span>, <span class="st">"Alice"</span>, <span class="st">"Emily"</span>), <span class="at">Age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Category <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>Age <span class="sc">&gt;=</span> <span class="dv">30</span>, <span class="st">"Senior"</span>, <span class="st">"Junior"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>The data frame df contains columns for names and ages.</li>
+<li>The ifelse function is applied to the Age column.</li>
+<li>If the age is greater than or equal to 30, the Category column is assigned the value “Senior”. Otherwise, it is assigned “Junior”.</li>
+<li>Result: The df data frame will have an additional column Category with values c(“Junior”, “Junior”, “Senior”).</li>
+</ul>
+</section>
+<section id="for-loop" class="level2">
+<h2 class="anchored" data-anchor-id="for-loop"><code>for</code> loop</h2>
+<p>The <code>for</code> loop in R allows for executing a block of code repeatedly for a specified number of iterations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Syntax </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (variable <span class="cf">in</span> sequence) {</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block to be executed in each iteration</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="for-loop-example" class="level2">
+<h2 class="anchored" data-anchor-id="for-loop-example"><code>for</code> loop Example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1
+[1] 2
+[1] 3
+[1] 4
+[1] 5</code></pre>
+</div>
+</div>
+<ul>
+<li>The for loop iterates over the sequence 1:5.</li>
+<li>In each iteration, the loop variable i takes the value of the current element in the sequence.</li>
+<li>The code block inside the curly braces is executed for each iteration, which in this case, is printing the value of i.</li>
+<li>Result: The numbers 1 to 5 are printed.</li>
+</ul>
+</section>
+<section id="using-for-loop-with-vector" class="level2">
+<h2 class="anchored" data-anchor-id="using-for-loop-with-vector">Using <code>for</code> Loop with Vector</h2>
+<p>The <code>for</code> loop can be used to iterate over elements of a vector.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"orange"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (fruit <span class="cf">in</span> fruits) {</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(fruit)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "apple"
+[1] "banana"
+[1] "orange"</code></pre>
+</div>
+</div>
+<ul>
+<li>The vector fruits contains strings representing different fruits.</li>
+<li>The for loop iterates over each element of the fruits vector.</li>
+<li>In each iteration, the loop variable fruit takes the value of the current element.</li>
+<li>The code block inside the curly braces is executed for each iteration, which in this case, is printing the value of fruit.</li>
+<li>Result: The strings “apple”, “banana”, and “orange” are printed.</li>
+</ul>
+</section>
+<section id="controlling-for-loop-with-conditions" class="level2">
+<h2 class="anchored" data-anchor-id="controlling-for-loop-with-conditions">Controlling <code>for</code> Loop with Conditions</h2>
+<p>You can control the behavior of a <code>for</code> loop using conditional statements.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">"is even"</span>))</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">"is odd"</span>))</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1 is odd"
+[1] "2 is even"
+[1] "3 is odd"
+[1] "4 is even"
+[1] "5 is odd"
+[1] "6 is even"
+[1] "7 is odd"
+[1] "8 is even"
+[1] "9 is odd"
+[1] "10 is even"</code></pre>
+</div>
+</div>
+</section>
+<section id="controlling-for-loop-with-conditions-1" class="level2">
+<h2 class="anchored" data-anchor-id="controlling-for-loop-with-conditions-1">Controlling <code>for</code> Loop with Conditions</h2>
+<ul>
+<li>The for loop iterates over the sequence 1:10.</li>
+<li>In each iteration, the loop variable i takes the value of the current element.</li>
+<li>The if statement checks if i is even (divisible by 2) using the modulo operator (%%).</li>
+<li>Based on the condition, the code block inside the corresponding branch of the if statement is executed, printing whether the number is even or odd.</li>
+<li>Result: The numbers from 1 to 10 are printed along with their even or odd classification.</li>
+</ul>
+</section>
+<section id="while-loop" class="level2">
+<h2 class="anchored" data-anchor-id="while-loop"><code>while</code> loop</h2>
+<p>The <code>while</code> loop in R allows for executing a block of code repeatedly as long as a specified condition is <code>TRUE.</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (condition) {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code block to be executed</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="while-loop-example" class="level2">
+<h2 class="anchored" data-anchor-id="while-loop-example"><code>while</code> Loop Example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">5</span>) {</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1
+[1] 2
+[1] 3
+[1] 4
+[1] 5</code></pre>
+</div>
+</div>
+<ul>
+<li>The variable i is initially set to 1.</li>
+<li>The while loop continues executing as long as i is less than or equal to 5.</li>
+<li>In each iteration, the code block inside the curly braces is executed, which in this case, is printing the value of i.</li>
+<li>After printing, i is incremented by 1 using the assignment statement i &lt;- i + 1.</li>
+<li>The loop continues until i becomes greater than 5, at which point the condition becomes FALSE, and the loop terminates.</li>
+<li>Result: The numbers 1 to 5 are printed.</li>
+</ul>
+</section>
+<section id="using-while-loop-with-conditional-statements" class="level2">
+<h2 class="anchored" data-anchor-id="using-while-loop-with-conditional-statements">Using <code>while</code> Loop with Conditional Statements</h2>
+<p>You can use conditional statements within a while loop to control its behavior.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">"is even"</span>))</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">"is odd"</span>))</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1 is odd"
+[1] "2 is even"
+[1] "3 is odd"
+[1] "4 is even"
+[1] "5 is odd"
+[1] "6 is even"
+[1] "7 is odd"
+[1] "8 is even"
+[1] "9 is odd"
+[1] "10 is even"</code></pre>
+</div>
+</div>
+</section>
+<section id="using-while-loop-with-conditional-statements-1" class="level2">
+<h2 class="anchored" data-anchor-id="using-while-loop-with-conditional-statements-1">Using <code>while</code> Loop with Conditional Statements</h2>
+<ul>
+<li>The variable i is initially set to 1.</li>
+<li>The while loop continues executing as long as i is less than or equal to 10.</li>
+<li>In each iteration, the if statement checks if i is even (divisible by 2) using the modulo operator (%%).</li>
+<li>Based on the condition, the code block inside the corresponding branch of the if statement is executed, printing whether the number is even or odd.</li>
+<li>After executing the code block, i is incremented by 1 using the assignment statement i &lt;- i + 1.</li>
+<li>Result: The numbers from 1 to 10 are printed along with their even or odd classification.</li>
+</ul>
+</section>
+<section id="controlling-while-loop-with-external-conditions" class="level2">
+<h2 class="anchored" data-anchor-id="controlling-while-loop-with-external-conditions">Controlling <code>while</code> Loop with External Conditions</h2>
+<p>You can control the behavior of a <code>while</code> loop by modifying external conditions within the loop.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(x)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x <span class="sc">-</span> <span class="dv">2</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10
+[1] 8
+[1] 6
+[1] 4
+[1] 2</code></pre>
+</div>
+</div>
+</section>
+<section id="controlling-while-loop-with-external-conditions-1" class="level2">
+<h2 class="anchored" data-anchor-id="controlling-while-loop-with-external-conditions-1">Controlling <code>while</code> Loop with External Conditions</h2>
+<ul>
+<li>The variable x is initially set to 10.</li>
+<li>The while loop continues executing as long as x is greater than 0.</li>
+<li>In each iteration, the code block inside the curly braces is executed, which in this case, is printing the value of x.</li>
+<li>After printing, x is decremented by 2 using the assignment statement x &lt;- x - 2.</li>
+<li>The loop continues until x becomes non-positive, at which point the condition becomes FALSE, and the loop terminates.</li>
+<li>Result: The numbers 10, 8, 6, 4, and 2 are printed.</li>
+</ul>
+</section>
+<section id="break-statement" class="level2">
+<h2 class="anchored" data-anchor-id="break-statement"><code>break</code> statement</h2>
+<ul>
+<li>The break statement in R is used to exit a loop prematurely.</li>
+<li>It is typically used within conditional statements to terminate the loop based on a specific condition.</li>
+</ul>
+</section>
+<section id="break-statement-example" class="level2">
+<h2 class="anchored" data-anchor-id="break-statement-example"><code>break</code> Statement Example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">5</span>) {</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1
+[1] 2
+[1] 3
+[1] 4
+[1] 5</code></pre>
+</div>
+</div>
+</section>
+<section id="break-statement-example-1" class="level2">
+<h2 class="anchored" data-anchor-id="break-statement-example-1"><code>break</code> Statement Example</h2>
+<ul>
+<li>The variable i is initially set to 1.</li>
+<li>The while loop continues executing as long as i is less than or equal to 10.</li>
+<li>In each iteration, the code block inside the curly braces is executed, which in this case, is printing the value of i.</li>
+<li>The if statement checks if i is equal to 5.</li>
+<li>If the condition is TRUE, the break statement is encountered, causing the loop to terminate immediately.</li>
+<li>After the break statement, the remaining code within the loop is not executed.</li>
+<li>Result: The numbers 1 to 5 are printed, and the loop terminates when i becomes 5.</li>
+</ul>
+</section>
+<section id="next-statement" class="level2">
+<h2 class="anchored" data-anchor-id="next-statement"><code>next</code> statement</h2>
+<ul>
+<li>The next statement in R is used to skip the current iteration of a loop and move to the next iteration.</li>
+<li>It is typically used within conditional statements to control the flow of the loop based on a specific condition.</li>
+</ul>
+</section>
+<section id="next-statement-example" class="level2">
+<h2 class="anchored" data-anchor-id="next-statement-example"><code>next</code> Statement Example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">3</span>) {</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1
+[1] 2
+[1] 4
+[1] 5</code></pre>
+</div>
+</div>
+<ul>
+<li>The for loop iterates over the values 1 to 5.</li>
+<li>In each iteration, the code block inside the curly braces is executed.</li>
+<li>The if statement checks if i is equal to 3.</li>
+<li>If the condition is TRUE, the next statement is encountered, causing the current iteration to be skipped, and the program flow moves to the next iteration.</li>
+<li>If the condition is FALSE, the code block continues executing, and the value of i is printed.</li>
+<li>Result: The numbers 1, 2, 4, and 5 are printed. The iteration with i equal to 3 is skipped.</li>
+</ul>
+</section>
+<section id="repeat-loop" class="level2">
+<h2 class="anchored" data-anchor-id="repeat-loop"><code>repeat</code> loop</h2>
+<ul>
+<li>The repeat loop in R allows for executing a block of code repeatedly until a specified condition is met.</li>
+<li>It provides a way to create an infinite loop that can be terminated using control flow statements.</li>
+</ul>
+</section>
+<section id="repeat-loop-example" class="level2">
+<h2 class="anchored" data-anchor-id="repeat-loop-example"><code>repeat</code> loop Example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">5</span>) {</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1
+[1] 2
+[1] 3
+[1] 4
+[1] 5</code></pre>
+</div>
+</div>
+</section>
+<section id="repeat-loop-example-1" class="level2">
+<h2 class="anchored" data-anchor-id="repeat-loop-example-1"><code>repeat</code> loop Example</h2>
+<ul>
+<li>The variable i is initially set to 1.</li>
+<li>The repeat loop continues executing the code block inside the curly braces indefinitely.</li>
+<li>In each iteration, the value of i is printed.</li>
+<li>The variable i is incremented by 1 using the assignment statement i &lt;- i + 1.</li>
+<li>The if statement checks if i is greater than 5.</li>
+<li>If the condition is TRUE, the break statement is encountered, causing the loop to terminate.</li>
+<li>After the break statement, the program flow continues with the next statement after the loop.</li>
+<li>Result: The numbers 1 to 5 are printed, and the loop terminates when i becomes greater than 5.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Copyright 2022, Md. Jubayer Hossain</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>

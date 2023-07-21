@@ -1,0 +1,41 @@
+---
+title: "Frequently Asked Questions (FAQs)"
+editor: source
+---
+
+
+## FAQs
+
+1.  **Q:** What is the level of proficiency in R programming language required for this course?
+
+> **A:** Basic proficiency in R programming language is required for this course. However, the course will cover the basics of R programming language as well, so students who are not familiar with R can also take this course.
+
+2. **Q:** Is this course suitable for beginners in bioinformatics?
+
+> **A:** Yes, this course is suitable for beginners in bioinformatics who have a basic understanding of molecular biology and genetics.
+
+3.  **Q:** Do I need to have prior knowledge of statistics for this course?
+
+> **A:** Yes, a basic understanding of statistics and probability theory is required for this course.
+
+4.  **Q:** Can I take this course if I am not from a biological sciences background?
+
+> **A:** Yes, this course can be taken by anyone who wants to learn R/Bioconductor for bioinformatics data analysis, regardless of their background.
+
+
+5.  **Q:** What is the duration of the course?
+
+> **A:** The duration of the course may vary depending on the institution offering the course, but typically ranges from several weeks to a few months.
+
+
+6.  **Q:** Is this course available online?
+
+> **A:** Yes, this course may be available online, depending on the institution offering the course.
+
+7. **Q:** Can I get a certificate after completing the course?
+
+>  **A:** Yes. 
+
+8.  **Q:**  How can I apply the knowledge gained from this course to my research projects?
+
+>  **A:** The knowledge gained from this course can be applied to your research projects by using R/Bioconductor packages for bioinformatics data analysis. You can apply the techniques and methods learned in this course to your own data and research questions.
